@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock - What time is it now?</title>
+    <style>
+        html{
+
+            font-family: 'helvetica neue';
+            text-align: center;
+            font-size: 10px;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .clock{
+            position: relative;
+            width: 30rem;
+            height: 30rem;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.6);
+            margin: auto;
+            margin-top: 20rem;
+            box-shadow: 0 0 .5rem rgba(250,250,250,0.2),
+                        inset 0 0 1rem .1rem rgba(200,200,200,0.1);            
+        }
+        
+        .hand{
+            position: absolute;
+            top: 50%;
+            transform-origin: 100%;
+            transform:rotate(90deg);
+            transition: all 50ms ease-in-out;
+        }
+
+        .clock__hour{
+            width: 25%;
+            height: .2rem;
+            background-color: gray;
+            left: 25%;
+       }
+       .clock__min{
+            width: 38%;
+            height: .2rem;
+            background-color: gray;
+            left: 12%;
+        }
+        .clock__sec{
+            width: 40%;
+            height: .1rem;
+            background-color: #9499b7;
+            left: 10%;            
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class = "hand clock__hour"></div>
+        <div class ="hand clock__min"></div>
+        <div class ="hand clock__sec"></div>
+    </div>
+</body>
+
+<script>
+   const html = document.querySelector('html');
+   
+   const hands = document.querySelectorAll('.hand');
+   const hourHand = document.querySelector('.clock__hour');
+   const minHand = document.querySelector('.clock__min');
+   const secHand = document.querySelector('.clock__sec');
+
+   const backgroundImgArr = ["img/cloud.jpg"
+                            ,"img/heron.jpg"
+                            ,"img/sand.jpg"
+                            ,"img/squirrel.jpg"];
+
+    function changeImg(){
+       const imgNum = Math.round(Math.random()*3);
+       html.style.background = `center/cover no-repeat url(${backgroundImgArr[imgNum]})` 
+   }
+
+
+   function setClockHands(){
+      const now = new Date();
+
+      const sec = now.getSeconds();
+      const secDeg = (sec / 60) * 360;
+      secHand.style.transform = `rotate(${secDeg + 90}deg)`;
+      if(sec == 0){
+        hands.forEach(hand => hand.style.transition = 'none');
+      } else {
+        hands.forEach(hand => hand.style.transition = '');
+      }
+
+      const min = now.getMinutes();
+      const minDeg = (min / 60) * 360 + ((sec / 60) * 6) ;
+      minHand.style.transform = `rotate(${minDeg + 90}deg)`;
+
+      const hour = now.getHours();
+      const hourDeg = (hour / 12) * 360 + ((min / 60) * 30)
+      hourHand.style.transform = `rotate(${hourDeg + 90}deg)`;
+   };
+
+ window.addEventListener('DOMContentLoaded',changeImg);
+
+ setInterval(setClockHands,1000);
+ setClockHands();
+
+</script>
+
+</html>
