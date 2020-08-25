@@ -1,0 +1,73 @@
+/*global setting*/
+:root {
+    --title-size: 32px;
+    --main-size: 18px;
+    --opacity: 0.5;
+    --base: #ffff00;
+    --highlight: #ff0000;
+}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: var(--base);
+    text-align: center;
+}
+
+/*header*/
+.head__title{
+    font-size: 54px;
+}
+
+/*controls*/
+#controls{
+    font-size: 18px;
+    background-color: white;
+    padding: 20px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+input{
+    width: 100px;
+    margin: 2px;
+}
+
+label{
+    margin: 4px 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* main */
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: var(--title-size);
+    margin: 60px auto ;
+    min-height: 600px;
+    max-width: 1200px;
+    background: center/cover no-repeat url(img/puffins-5223055_1280.jpg); 
+}
+
+.main__title{
+    font-size: var(--title-size);
+    margin-bottom: var(--title-size);
+}
+
+.main__context{
+    position: relative;
+    font-size: var(--main-size);
+    margin: 0 var(--title-size);
+    padding: var(--main-size);
+    border-radius: 2px;
+    background-color: rgba(255,255,255,var(--opacity));
+}
+
+.highlight{
+    color: var(--highlight);
+    font-style: italic;
+}
