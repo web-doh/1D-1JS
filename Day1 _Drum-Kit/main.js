@@ -16,10 +16,16 @@ function playSound(e){
 
   function removeTransition(e){
     if (e.propertyName !== 'transform') return;
-    console.log(e.propertyName);
-    this.classList.remove('playing');
+    e.target.classList.remove('playing');
   }
 
-  const keys = document.querySelectorAll('.key');
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  // const keys = document.querySelectorAll('.key');
+  // keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+ 
+  const key = document.querySelector('.keys');
+  key.addEventListener('transitionend', event => {
+    if(event.target.className == 'key playing')
+    removeTransition(event);
+  });
+ 
   window.addEventListener('keydown',playSound);
