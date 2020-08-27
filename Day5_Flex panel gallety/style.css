@@ -1,0 +1,94 @@
+:root{
+    --font-main: 'Source Serif Pro', serif;
+    --weight-light : 300;
+    --weight-regular : 400;
+}
+
+html{
+    box-sizing: border-box;
+    background-color: salmon;
+    font-family: var(--font-main);
+    font-size: 100%;
+    font-weight: var(--weight-light);
+}
+
+body{
+    margin: 0;
+}
+
+.panels {
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+  }
+
+.panel{
+    background-color: yellowgreen;
+    flex:1;
+    background: center / cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 
+    font-size 700ms cubic-bezier(.61,-0.19,.7,-0.11),
+    flex 700ms cubic-bezier(.61,-0.19,.7,-0.11),
+    background 200ms;
+}
+
+.panel1 { background-image:url(https://images.unsplash.com/photo-1534759846116-5799c33ce22a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=688&q=80);}
+.panel2 { background-image: url(https://images.unsplash.com/photo-1591039442426-b456f5cf5cb0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);}
+.panel3 { background-image: url(https://images.unsplash.com/photo-1596698900939-5fc676d3b818?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);}
+.panel5 { background-image: url(https://images.unsplash.com/photo-1497504264883-854aff4f6005?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);}
+.panel4 { background-image: url(https://images.unsplash.com/photo-1596698886399-a8f9734ce351?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);}
+
+.panel > * {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    font-size: 1.5em;
+    color: white;
+    text-transform: uppercase;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.3),
+                 0 0 .3rem rgba(255,255,255, 0.3) ;
+}
+
+.panel > *:first-child,
+.panel > *:last-child {
+   font-style: italic;
+   font-weight: var(--weight-light);
+   transition: transform 300ms ease;
+}
+
+.panel > *:first-child{
+    transform: translateY(-100%);
+}
+.panel > *:last-child{
+    transform: translateY(100%);
+}
+
+.panel.open-active > *:first-child,
+.panel.open-active > *:last-child{
+    transform: translateY(0);
+}
+
+.panel > *:nth-child(2) {
+    font-size: 4em;
+    font-style: italic;
+    font-weight: var(--weight-regular);
+}
+
+
+.panel.open {
+    flex: 5;
+    font-size: 1.5em;
+  }
+
+@media only screen and (max-width: 600px) {
+.panel p {
+      font-size: 1em;
+  }
+}
