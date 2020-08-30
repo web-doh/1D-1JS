@@ -84,7 +84,7 @@ body{
 
 .panel.open {
     flex: 5;
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
 @media only screen and (max-width: 600px) {
