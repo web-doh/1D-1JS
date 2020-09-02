@@ -3,24 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <title>HTML5 Canvas</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
 </head>
 <body>
     <h1 id="title">Let's Draw!</h1>
   <section id="draw">
-    <label for="draw__rectangle" id="btn__label"> Random Rectangle
-      <button id="draw__rectangle">□</button>
+    <label for="draw__rectangle" class="btn__label"> Random Rectangle
+      <button id="draw__rectangle" class="draw__btn">■</button>
+    </label>
+    <label for="draw__clear" class="btn__label"> Clear Canvas
+      <button id="draw__clear" class="draw__btn"><i class="fas fa-eraser"></i></button>
     </label>
     <canvas id="draw__pen"></canvas>
   </section>
 <script>
   const canvas = document.querySelector('#draw__pen');
-  const drawRectBtn = document.querySelector('#draw__rectangle');
   const ctx = canvas.getContext('2d');
+  const drawRectBtn = document.querySelector('#draw__rectangle');
+  const eraseBtn = document.querySelector('#draw__clear');
+  const INITIAL_WIDTH = 5;
+  const INITIAL_COLOR = 'yellowgreen';
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   drawRectBtn.width = window.innerWidth;
-  ctx.lineWidth = 5;
+  ctx.strokeStyle = INITIAL_COLOR;
+  ctx.lineWidth = INITIAL_WIDTH;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   
@@ -64,8 +72,8 @@
 
   function drawRect() {
     const canvasSize = canvas.getBoundingClientRect();
-    const maxX = canvasSize.width;
-    const maxY = canvasSize.height;
+    const maxX = canvas.width;
+    const maxY = canvas.height;
     const MAX_LENGTH = 200;
     const MIN_LENGTH = 50;
     
@@ -73,12 +81,17 @@
     const rectY = Math.floor(Math.random()* (maxY - MAX_LENGTH + 1));
     const width = Math.floor(Math.random()* (MAX_LENGTH - MIN_LENGTH + 1)) + MIN_LENGTH;
     const height = Math.floor(Math.random()* (MAX_LENGTH - MIN_LENGTH + 1)) + MIN_LENGTH;
-    console.log(rectX,rectY);
-    console.log('---');
-    console.log(maxX - MAX_LENGTH + 1,maxY - MAX_LENGTH + 1)
-    console.log(maxX,maxY)
     ctx.strokeRect(rectX,rectY,width,height);
   }
+
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hue = 0;
+    ctx.lineWidth = INITIAL_WIDTH;
+    ctx.strokeStyle = INITIAL_COLOR;
+  }
+
 
   canvas.addEventListener('mousedown',(e)=> {
      isDrawing = true;
@@ -86,11 +99,12 @@
      startY = e.offsetY;
      draw(e);
     });
+
   canvas.addEventListener('mousemove',draw);
   canvas.addEventListener('mouseup',() => isDrawing = false);
   canvas.addEventListener('mouseout', () => isDrawing = false);
-  drawRectBtn.addEventListener('click',drawRect)
-
+  drawRectBtn.addEventListener('click',drawRect);
+  eraseBtn.addEventListener('click',clearCanvas);
 </script>
 
 <style>
@@ -116,19 +130,14 @@
     align-items: center;
   }
 
-  #btn__label{
+  .btn__label{
     color: yellowgreen;
     font-size: 1.5rem;
   }
 
-  #draw__rectangle{
-    border: none;
-    outline: none;
-    font-size: 2.4rem;
+  .draw__btn{
+    font-size: 1.5rem;
     margin-bottom: 2rem;
-    padding: 0 10px 5px;
-    color: white;
-    background-color: yellowgreen;
     cursor: pointer;
   }
 
