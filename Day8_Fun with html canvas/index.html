@@ -31,6 +31,7 @@
   ctx.lineWidth = INITIAL_WIDTH;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
+  ctx.globalCompositeOperation = 'screen';
   
   let isDrawing = false;
   let startX = 0;
@@ -46,9 +47,8 @@
      ctx.lineTo(e.offsetX,e.offsetY);
      ctx.closePath();
      ctx.stroke();
-     startX = e.offsetX;
-     startY = e.offsetY;
-     
+     [startX,startY] = [e.offsetX,e.offsetY];
+    
      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 
      if(hue > 360 || hue < 0) {
@@ -95,8 +95,7 @@
 
   canvas.addEventListener('mousedown',(e)=> {
      isDrawing = true;
-     startX = e.offsetX;
-     startY = e.offsetY;
+     [startX,startY] = [e.offsetX,e.offsetY];
      draw(e);
     });
 
