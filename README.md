@@ -136,8 +136,11 @@ Vanilla JS 연습
 
 ## Day13
 
-## Day14
-
+## Day14: JS refence vs copy
+### summary
+   - reference 타입과 primitive 타입 비교
+   - index 파일내 정리 
+    
 ## Day15
 
 ## Day16
