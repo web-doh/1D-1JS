@@ -36,7 +36,7 @@
 <script>
     const container = document.querySelector('.container');
     const text = document.querySelector('h1');
-    const MOVE = text.clientWidth;
+    const MOVE = text.clientWidth; //그림자를 어느 정도 간격으로 벌릴 것인지 지정 
 
     function movingShadow(e){
         const {offsetWidth: width, offsetHeight:height} = container;
