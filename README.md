@@ -116,7 +116,7 @@ Vanilla JS 연습
   3. 영상 description 추가하여 재생되는 동영상 시간 display (displayPlayTime)
 
 ## Day12: Key Sequence Detect (20/09/07)
- ### function
+  ### function
   - 설정해놓은 secret code와 사용자가 누른 연속된 키보드 키가 동일한 경우,
     로그 창: 성공 메세지 + 스크린: 
   ### wesbos의 솔루션 
@@ -136,14 +136,28 @@ Vanilla JS 연습
 
 ## Day13
 
-## Day14: JS refence vs copy
-### summary
-   - reference 타입과 primitive 타입 비교
-   - index 파일내 정리 
+## Day14: JS refence vs copy (20/09/10)
+  ### summary
+  - reference 타입과 primitive 타입 비교
+  - index 파일내 정리 
     
 ## Day15
 
-## Day16
+## Day16: Mousemove shadow (20/09/11)
+  ### function
+  - 마우스가 움직이는 정도에 따라 그림자 4개가 각각 다른 방향으로 움직이기
+
+  ### wesbos의 솔루션 
+  1. text가 담긴 컨테이너의 offsetWidth,offsetHeight를 받기 
+  2. 마우스가 움직이는 offsetX,offsetY 값 측정 
+     - container 내의 text에 마우스가 올라간 경우, offset의 기준이 text가 됨 
+        -> e.target.offsetLeft,offsetTop을 이용하여 offset의 기준을 container로 조정
+  3. 그림자 4개가 동일한 규칙 내에서 서로 다른 방향으로 움직일 수 있도록 px값 설정
+     - 위에서 구한 측정값들로 그림자가 이동할 위치 지정 
+ 
+  ### 향후 사용 방법
+  1. 홈페이지 title에 효과를 주고 싶을 떄
+     (그림자 위치가 마우스 방향에 맞춰 살짝 바뀌는 정도로 응용 가능할 듯) 
 
 ## Day17
 
