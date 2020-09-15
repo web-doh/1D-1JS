@@ -134,7 +134,17 @@ Vanilla JS 연습
       => 로그 창에 스타일 입히기 
 
 
-## Day13
+## Day13: Slide in OnScroll (20/09/15)
+  ### function
+  - 스크롤을 내리거나 올릴 때, 이미지가 fade-in 되는 효과
+  - scroll 이벤트가 될 때마다 컴퓨터가 작업 처리할 경우 발생하는 낭비 처리
+
+  ### wesbos의 솔루션
+  1. function checkSlide: window에 scroll 이벤트를 등록하여, 일정 위치만큼 스크롤되면 이미지가 보이도록 처리
+     1) 일정 위치 계산 : img의 offsetTop,height 등 / window의 scrollY,innerHeight
+     2) 값 비교 : img와 window의 속성 비교(조건문)에 따라 classList 추가 or 삭제
+  2. function debounce: scroll 이벤트가 일어나도 일정 시간 간격으로만 func 작동
+     - setTimeout, apply() 등 
 
 ## Day14: JS refence vs copy (20/09/10)
   ### summary
@@ -159,7 +169,18 @@ Vanilla JS 연습
   1. 홈페이지 title에 효과를 주고 싶을 떄
      (그림자 위치가 마우스 방향에 맞춰 살짝 바뀌는 정도로 응용 가능할 듯) 
 
-## Day17
+## Day17: Sort without Articles (20/09/15)
+  ### function
+  - html 파일에 적지 않고, JS로 영화 목록을 알파벳 순서로 나열 후 display
+
+  ### wesbos의 솔루션 
+  1. 영화 목록 array 형태로 저장
+  2. replace().trim(): 정규표현식으로 제목 맨 앞 단어가 'a, an, the'인 경우 삭제
+  3. 알파벳 순으로 sort()한 뒤, map()이용하여 각각의 제목을 li 태그로 변경 -> join()으로 텍스트화
+  4. innerHTML을 이용하여 ul 태그에 li태그 삽입 
+
+  ### 향후 사용 방법
+  - 동적인 리스트 생성시 사용 (데이터를 JS 파일에 분리하여 관리)
 
 ## Day18
 
