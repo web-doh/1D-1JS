@@ -39,14 +39,16 @@
 
   <script>
     const slidingImgs = document.querySelectorAll('.slide-in');
-  
+
     function imgSlideIn(){
         slidingImgs.forEach(slidingImg => {
           const slideInAt = window.scrollY + window.innerHeight - slidingImg.height / 2;
-          const imageBottom = slidingImg.offsetTop + slidingImg.height;
+          const imgBottom = slidingImg.offsetTop + slidingImg.height;
           const isHalfShown = slideInAt > slidingImg.offsetTop;
-          if(isHalfShown){
+          const isBottom = imgBottom > window.scrollY;
+          if(isHalfShown && isBottom){
             slidingImg.classList.add('active');
+            console.log(imgBottom,window.scrollY);
         } else {
           slidingImg.classList.remove('active');
         }
