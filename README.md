@@ -182,8 +182,24 @@ Vanilla JS 연습
   ### 향후 사용 방법
   - 동적인 리스트 생성시 사용 (데이터를 JS 파일에 분리하여 관리)
 
-## Day18
+## Day18: Adding up times with reduce (20/09/16)
+   ### function
+   - 목록에 포함된 비디오의 재생시간의 총합 구하기
+   
+   ### wesbos의 솔루션
+   1. video list -> map(): dataset.time에 저장된 데이터 배열 반환
+                 -> map()(split & map(parseFloat)): 'mins:secs' (string) 데이터를 secs(float) 데이터로 변환하여 새 배열 반환
+   2. total time: reduce() -> 총 재생시간(secs) 반환
+   3. Math.floor와 %,/ 연산자를 이용하여 총 재생시간을 h,m,s로 변환
 
+   ### 개선방향 
+   1. video list에서 video를 삭제 혹은 삭제 취소가 가능하도록 
+      => classList.toggle('remove__list') -> filter(): classList에 remove__list가 포함된 경우 계산에서 제외 
+   2. calculate 버튼 추가하여, 리스트 변경되어도 재계산이 가능하도록
+      => addEventListener('click') 등록 
+   3. 화면에 각각의 비디오 재생시간과 총 합계가 표시되지 않음 
+      => textContent 속성 이용하여 display 되도록  
+   
 ## Day19
 
 ## Day20
