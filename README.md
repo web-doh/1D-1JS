@@ -1,9 +1,12 @@
 # 1D-1JS
 # 1Day 1JS challenge(with Wes Bos)
 
-기간 (8월21일~ , 주말은 제외~!)
-Vanilla JS 연습
-(site에서 제공하는 HTML 템플릿에 css 개별 적용)
+## 기간 (8월21일~ , 주말은 제외~!)
+  - Vanilla JS 연습 (site에서 제공하는 기본 템플릿을 바탕으로 JS, CSS 파일 수정)
+  
+  - Day 폴더 내 wesbos 폴더 - 'index-FINISHED.html' 파일: 'wesbos의 솔루션' 
+  - Day 폴더 내 wesbos 폴더 - 'index-START.html'파일: 기본 템플릿
+  - Day 폴더 안에 있는 파일들: 직접 작성 또는 수정한 파일
 
 ## Day1: Drum-kit (20/08/21)
   ### function
@@ -151,7 +154,20 @@ Vanilla JS 연습
   - reference 타입과 primitive 타입 비교
   - index 파일내 정리 
     
-## Day15
+## Day15: LocalStorage (20/09/17)
+  ### function
+  - 브라우저를 재접속해도 기존에 입력한 값들이 그대로 유지 
+
+  ### wesbos의 솔루션 
+  1. localStorage에 값 저장
+  2. event delegation으로 checkbox 선택 
+
+  ### 개선방향
+  1. checkbox 클릭시 한번에 선택 혹은 해제되는 기능 추가
+     - checkbox에 click 이벤트 실행되면, 조건문으로 checkbox 상태 확인 후 forEach문 활용하여 전체 check or 해제
+  2. 목록 삭제 기능 추가
+     - 전체 삭제 시, localStorage.clear() 
+     - 부분 삭제 시, localStorage.removeItem(key)
 
 ## Day16: Mousemove shadow (20/09/11)
   ### function
