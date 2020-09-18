@@ -137,7 +137,7 @@
       => 로그 창에 스타일 입히기 
 
 
-## Day13: Slide in OnScroll (20/09/15)
+## Day13: Slide in OnScroll (20/09/14)
   ### function
   - 스크롤을 내리거나 올릴 때, 이미지가 fade-in 되는 효과
   - scroll 이벤트가 될 때마다 컴퓨터가 작업 처리할 경우 발생하는 낭비 처리
@@ -218,7 +218,25 @@
    
 ## Day19
 
-## Day20
+## Day20: Speech Recognition (20/09/18)
+   ### function
+   - 음성 인식해서 화면에 텍스트로 나타내는 기능 만들기 
+   
+   ### wesbos의 솔루션
+   - SpeechRecognition의 속성, 이벤트, 메서드를 이용
+   1. SpeechRecognition의 새로운 object를 생성
+   2. 'result' 이벤트가 실행되면, 마이크로 인식한 음성을 텍스트로 변환하기
+      - event의 results 속성으로 데이터를 받아와 map()을 이용하여 transcript 속성만 분리
+      -> join(): arr 형태의 결과값을 string으로 변경 
+      -> replace(regex,word): 똥과 관련된 단어를 이모티콘으로 순화
+  3. createElement와 append 속성을 이용하여 텍스트 화면에 display
+  4. html: 텍스트를 받아오는 div 박스에 contenteditable 속성 추가하여 오타 직접 수정할 수 있도록
+
+  ### 개선방향
+  1. 영어로 설정된 언어를 한국어로 변경 (recognition.lang = 'ko-KR';)
+  2. wesbos의 솔루션 중 2,3번의 기능(원래 addEventListener에 바로 등록)을 함수(audioTrans)로 분리하여 가독성 높이기
+  3. 화면에서 글자가 넘칠 때, 현재 실행 중인 텍스트에 포커스되도록 -> scrollIntoView() 추가
+  4. css styling : 폰에서 음성인식 프로그램에 말 거는 것처럼 디자인 변경  
 
 ## Day21
 
