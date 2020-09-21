@@ -238,7 +238,16 @@
   3. 화면에서 글자가 넘칠 때, 현재 실행 중인 텍스트에 포커스되도록 -> scrollIntoView() 추가
   4. css styling : 폰에서 음성인식 프로그램에 말 거는 것처럼 디자인 변경  
 
-## Day21
+## Day21: Geolocation (20/09/21)
+   ### function
+   - 방향 인식해서 나침반으로 표현하기
+   
+   ### wesbos의 솔루션
+   1. geolocation의 API 중 watchPosition을 사용 -> 장치의 위치가 바뀔 때마다 자동으로 새로운 위치를 받아와 콜백함수 처리
+   2. 받아온 data 중 coord.speed와 coords.heading 속성 -> 기계의 속도 값과 나침반 방향을 수정
+
+   ### 향후 사용 방법
+   -모바일 나침반 혹은 속도 측정 어플 
 
 ## Day22
 
