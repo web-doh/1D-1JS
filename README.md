@@ -249,7 +249,27 @@
    ### 향후 사용 방법
    -모바일 나침반 혹은 속도 측정 어플 
 
-## Day22
+## Day22: Follow Along Link Highlighter
+   ### function
+   - 마우스가 hyperlink 걸린 단어 위에 올라가면 단어가 highlight!  
+
+   ### wesbos의 솔루션
+   1. createElement로 하이라이트 색상이 적용될 span 컨테이너('.highlight')를 생성
+   2. addEventListener로 'mouseenter' 이벤트가 진행되면 highlightLink 함수가 실행되도록 설정
+      -> a 태그 전체에 forEach문으로 등록 
+   3. getBoundingClientRect()로 이벤트가 발생된 하이퍼링크 텍스트의 위치, 크기 등의 속성을 가져옴
+   4. '.highlight'가 이벤트 발생 위치로 이동하도록 3번에서 얻은 속성을 이용하여 position 설정  
+
+   ### 개선방향
+   1. 이벤트 등록시 forEach문 대신 event delegation 사용 
+      -> parent node에 이벤트 등록 후, a tag 선택시에만 이벤트 함수 실행 
+   2. highlight 될 때, 글자 색상도 변경하도록 
+      -> classList.add('a_font') : 폰트 색상 변경 
+      -> classList.remove('a_font') : 다음 이벤트 발생 시, 다른 텍스트에 'a-font' 클래스가 적용되어 있다면 삭제
+   3. css styling 변경 (디자인 변경 및 media query 추가 -> 반응형)
+   
+   - highlighter가 이리저리 옮겨지는 애니메이션 효과를 원하지 않는다면, 
+     span 컨테이너를 추가로 만들지 않고, 선택된 a tag에 classList를 추가하거나 삭제하는 방식이 더 간단하기도..!
 
 ## Day23
 
