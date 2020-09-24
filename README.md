@@ -274,7 +274,9 @@
    - highlighter가 이리저리 옮겨지는 애니메이션 효과를 원하지 않는다면, 
      span 컨테이너를 추가로 만들지 않고, 선택된 a tag에 classList를 추가하거나 삭제하는 방식이 더 간단하기도..!
 
-## Day23: Sticky Nav (20/09/23-24)
+## Day23
+       
+## Day24: Sticky Nav (20/09/23-24)
    ### function
    - 스크롤해서 Navigation bar가 스크린 최상단으로 가면 최상단에 그대로 고정
 
@@ -291,10 +293,12 @@
    2. Styling customize
       - 디자인 변경 및 media query 추가(크기 단위: rem 사용)
       - Day16에서 진행했던 '마우스 움직이면 그림자 위치 이동' 방법을 메인 타이틀에 추가 적용 
-       
-## Day24
 
-## Day25
+## Day25: Event Capture, Propagation, Bubbling and Once
+   ### summary
+  - Event Propagation: bubbling 과 capturing 이해
+  - addEventListener의 capture, once 옵션 이해
+  - if (e.target !== e.currentTarget) return 구문과 stopPropagation() 차이 이해 
 
 ## Day26
 
