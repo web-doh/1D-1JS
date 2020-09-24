@@ -30,7 +30,8 @@
      - new Date().get api를 이용하여 각도 계산 
 
   ### 개선방향
-  1. 배경화면 랜덤 변경 함수 추가 (DOMContentLoaded, Math) 
+  1. 배경화면 랜덤 변경 함수 추가 (DOMContentLoaded, Math)
+  2. Styling customize
 
 ## Day3: CSS Variables (20/08/25)
   ### function
@@ -45,7 +46,8 @@
 
   ### 개선방향
   1. text가 있는 사이트의 전체적인 변화를 볼 수 있도록 input 조절 요소 변경 
-  - 제목과 본문 각각의 font-size, 본문 뒤 배경색의 opacity, base color, highlight color 변경 
+  - 제목과 본문 각각의 font-size, 본문 뒤 배경색의 opacity, base color, highlight color 변경
+  2. Styling customize 
 
 ## Day4: Array Cardio-1 (20/08/26)
   ### function
@@ -65,7 +67,8 @@
    1. 다른 panel 클릭 -> 기존에 open 되어있던 panel은 닫히도록 변경 
       => filter로 열려있는 panel list 반환 
           -> open 돼있던 panel은 closing(classList.remove) 
-       
+   2. Styling customize 
+   
 ## Day6: Type ahead (20/09/03)
    ### function
    ### wesbos의 솔루션
@@ -249,7 +252,7 @@
    ### 향후 사용 방법
    -모바일 나침반 혹은 속도 측정 어플 
 
-## Day22: Follow Along Link Highlighter
+## Day22: Follow Along Link Highlighter (20/09/22)
    ### function
    - 마우스가 hyperlink 걸린 단어 위에 올라가면 단어가 highlight!  
 
@@ -266,13 +269,29 @@
    2. highlight 될 때, 글자 색상도 변경하도록 
       -> classList.add('a_font') : 폰트 색상 변경 
       -> classList.remove('a_font') : 다음 이벤트 발생 시, 다른 텍스트에 'a-font' 클래스가 적용되어 있다면 삭제
-   3. css styling 변경 (디자인 변경 및 media query 추가 -> 반응형)
+   3. Styling customize (디자인 변경 및 media query 추가 -> 반응형)
    
    - highlighter가 이리저리 옮겨지는 애니메이션 효과를 원하지 않는다면, 
      span 컨테이너를 추가로 만들지 않고, 선택된 a tag에 classList를 추가하거나 삭제하는 방식이 더 간단하기도..!
 
-## Day23
+## Day23: Sticky Nav (20/09/23-24)
+   ### function
+   - 스크롤해서 Navigation bar가 스크린 최상단으로 가면 최상단에 그대로 고정
 
+   ### wesbos의 솔루션
+   1. CSS - logo: overflow - hidden, max-width - 0으로 설정하여 스크린에서 보이지 않도록
+   2. 윈도우에 스크롤되면 body에 'fixed' class가 부여
+      -> 윈도우에서 y축으로 스크롤된 수치가 navbar의 offsetTop 값보다 커질 경우, body 태그의 classList에 'fixed' 추가 
+         1) navbar의 CSS : position - fixed, logo의 max-width - 500px 설정
+         2) body의 style : padding-top - navbar의 높이만큼 떨어지도록 설정                    
+      -> 반대인 경우, classList에서 'fixed' 제거
+       
+   ### 개선방향 
+   1. 직관적으로 이해하기 편하도록, body태그 대신 navbar에 'fixed' class 추가 
+   2. Styling customize
+      - 디자인 변경 및 media query 추가(크기 단위: rem 사용)
+      - Day16에서 진행했던 '마우스 움직이면 그림자 위치 이동' 방법을 메인 타이틀에 추가 적용 
+       
 ## Day24
 
 ## Day25
