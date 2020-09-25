@@ -274,8 +274,26 @@
    - highlighter가 이리저리 옮겨지는 애니메이션 효과를 원하지 않는다면, 
      span 컨테이너를 추가로 만들지 않고, 선택된 a tag에 classList를 추가하거나 삭제하는 방식이 더 간단하기도..!
 
-## Day23
-       
+## Day23: Speech synthesis (20/09/25)
+   ### function
+   - 원하는 텍스트를 적은 뒤, 목소리,속도,음을 선택하면 컴퓨터가 읽어주는 기능 
+
+   ### wesbos의 솔루션
+   1. speechSynthesis: 음성서비스 컨트롤(pause, speak 관련)
+      - 'voiceschanged' 이벤트 실행시, getVoice() 
+        -> 받아온 voice list 중 원하는 언어만 filter 
+        -> option창에 전달(map,join)
+      - cancel() & speak(): stop 혹은 speak 버튼 클릭시, 음성 재생 혹은 정지 
+   2. SpeechSynthesisUtterance(): 음성 설정 변경(voice,pitch 등과 관련)
+      - 조절하고자 하는 pitch, rate, text를 한번에 option으로 묶은 후, forEach문에 'change' 이벤트 리스너 등록 
+        -> 변경된 value값 받아와서 instance의 프로퍼티 값으로 설정해줌
+      - voice 도 유사한 방식으로 'change' 이벤트 리스너 등록
+
+   ### 개선방향
+   1. 초기 voice option 선택창에 'select a voice'문구가 먼저 보이도록 변경
+      - voiceDropdown.innerHTML = voiceList; => voiceDropdown.innerHTML += voiceList; 
+   2. range 값이나 text 창 변경되어도 바로 음성 재생되지 않고, speak 눌러야만 재생되도록 변경 
+
 ## Day24: Sticky Nav (20/09/23-24)
    ### function
    - 스크롤해서 Navigation bar가 스크린 최상단으로 가면 최상단에 그대로 고정
