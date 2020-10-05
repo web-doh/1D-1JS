@@ -318,7 +318,17 @@
   - addEventListener의 capture, once 옵션 이해
   - if (e.target !== e.currentTarget) return 구문과 stopPropagation() 차이 이해 
 
-## Day26
+## Day26: Stripe Follow Along Nav
+   ### function
+   - nav 메뉴에 마우스 올라갈 경우, 하단 메뉴 보이기
+
+   ### wesbos의 솔루션
+   1. nav 메뉴에 addEventListener를 등록하여 mouse가 올라간 경우, 
+      - classList를 add : 하단 메뉴 display: none -> display: block & opacity: 0 -> opacity: 1
+   2. mouse가 nav 메뉴에서 벗어난 경우,
+      - classList를 remove  
+   3. 하단 메뉴의 background는 따로 div 태그로 분리
+      - 하단 메뉴와 nav 바 자체의 getBoundingClientRect() 속성을 이용하여 background의 크기 및 위치 지정 
 
 ## Day27
 

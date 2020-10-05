@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow along Nav</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="title">Space Life</h1>
+    <nav class="menu">
+        <div class="dropdownBackground">
+            <span class="arrow"></span>
+        </div>
+      
+        <ul class="menu__items">
+            <li class="menu__item">
+                <a href="#" class= "item__title">About</a>
+                <div class="dropdown dropdown1">
+                    <img class ="about__img" src="https://images.unsplash.com/photo-1576086686350-2f5dba3ffeb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1104&q=80">
+                    <p class ="about__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur odit, consequatur voluptas aliquam ex iusto, sed dolores, maxime corporis quos deleniti? Voluptates, ipsum. Fuga rem omnis corporis ex sit earum?</p>
+                </div>
+            </li>
+            <li class="menu__item">
+                <a href="#" class= "item__title">Types</a>
+                <ul class="dropdown dropdown2">
+                    <li class="types__list">
+                        <span class="types__title">Mercury</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%EC%88%98%EC%84%B1">Learn Mercury</a>
+                    </li>
+                    <li class="types__list">
+                        <span class="types__title">Venus</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%EA%B8%88%EC%84%B1">Learn Venus</a>
+                    </li>
+                    <li class="types__list">
+                        <span class="types__title">Mars</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%ED%99%94%EC%84%B1">Learn Mars</a>
+                    </li>
+                    <li class="types__list">
+                        <span class="types__title">Jupiter</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%EB%AA%A9%EC%84%B1">Learn Jupiter</a>
+                    </li>
+                    <li class="types__list">
+                        <span class="types__title">Saturn</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%ED%86%A0%EC%84%B1">Learn Saturn</a>
+                    </li>
+                    <li class="types__list">
+                        <span class="types__title">Uranus</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%EC%B2%9C%EC%99%95%EC%84%B1">Learn Uranus</a>
+                    </li>
+                    <li class="types__list">
+                        <span class="types__title">Neptune</span>
+                        <a class="types__link" target="_blank" href="https://ko.wikipedia.org/wiki/%ED%95%B4%EC%99%95%EC%84%B1">Learn Neptune</a>
+                    </li>
+                </ul>
+            
+            </li>
+            <li class="menu__item">
+                <a href="#" class= "item__title">Links</a>
+                <ul class="dropdown dropdown3">
+                    <li class="links__list"><a class="links__link" href="#twitter">Twitter</a></li>
+                    <li class="links__list"><a class="links__link" href="#facebook">Facebook</a></li>
+                    <li class="links__list"><a class="links__link" href="#blog">Blog</a></li>
+                    <li class="links__list"><a class="links__link" href="#courses">Course Catalog</a></li>
+                  </ul>
+            </li>
+        </ul>
+    </nav>
+</body>
+<script>
+    const triggers = document.querySelectorAll('.menu__item');
+    const background = document.querySelector('.dropdownBackground');
+    const navBar = document.querySelector('.menu');
+
+    function handleEnter(e){
+        this.classList.add('trigger-enter');
+        setTimeout(() => {
+            this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active')
+            }, 150);
+        background.classList.add('open');
+
+        const dropdown = this.querySelector('.dropdown');
+        const dropdownCoords = dropdown.getBoundingClientRect();
+        const navCoords = navBar.getBoundingClientRect();
+        console.log(dropdownCoords);
+        console.log(navCoords);
+        const coords = {
+            height: dropdownCoords.height,
+            width: dropdownCoords.width,
+            top: dropdownCoords.top - navCoords.top,
+            left: dropdownCoords.left
+        };
+        
+        console.log(coords);
+        background.style.setProperty('width', `${coords.width}px`);
+        background.style.setProperty('height', `${coords.height}px`);
+        background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+    }
+
+    function handleOut(e){
+        this.classList.remove('trigger-enter', 'trigger-enter-active');
+        background.classList.remove('open');
+    }
+
+    triggers.forEach(trigger => trigger.addEventListener('mouseover', handleEnter));
+    triggers.forEach(trigger => trigger.addEventListener('mouseout', handleOut));
+</script>
+</html>
