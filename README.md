@@ -320,19 +320,34 @@
 
 ## Day26: Stripe Follow Along Nav
    ### function
-   - nav 메뉴에 마우스 올라갈 경우, 하단 메뉴 보이기
+   - nav 메뉴에 마우스 올라갈 경우, 하단 드롭 메뉴 보이기
 
    ### wesbos의 솔루션
    1. nav 메뉴에 addEventListener를 등록하여 mouse가 올라간 경우, 
-      - classList를 add : 하단 메뉴 display: none -> display: block & opacity: 0 -> opacity: 1
+      - classList를 add : 하단 드롭 메뉴 display: none -> display: block & opacity: 0 -> opacity: 1
    2. mouse가 nav 메뉴에서 벗어난 경우,
       - classList를 remove  
-   3. 하단 메뉴의 background는 따로 div 태그로 분리
-      - 하단 메뉴와 nav 바 자체의 getBoundingClientRect() 속성을 이용하여 background의 크기 및 위치 지정 
+   3. 하단 드롭 메뉴의 background는 따로 div 태그로 분리
+      - 하단 드롭 메뉴와 nav 바 자체의 getBoundingClientRect() 속성을 이용하여 background의 크기 및 위치 지정 
 
 ## Day27
+   
 
-## Day28
+## Day28: Video Speed Controller
+   ### function
+   - 동영상과 분리된 bar를 이용하여 동영상 재생속도를 조절
+   
+   ### wesbos의 솔루션
+   1. bar 위에서 마우스가 움직('mousemove')이면 이벤트 발생, function 실행 
+   2. function 
+      - event 발생 지점의 pageY와 bar의 offsetTop, offsetHeight 속성: 현재 마우스 위치가 전체 bar에서 어느 정도 비율을 차지 하는지 계산 
+      - 위에서 계산한 비율과 사용자가 지정한 최대 및 최소 재생속도를 이용하여, playbackRate 산출
+      - video.playbackRate 속성을 이용하여 재생속도 조절
+                  
+   ### 개선방향 
+   1. 비율 계산시, (e.pageY - this.offsetTop)는 직관적 X -> e.offsetY 속성만 이용하여 계산
+   2. bar에 이벤트 등록시, 마우스가 올라가서 움직일때마다 속도 변경돼서 조절 어려움 -> 'mousedown' 으로 변경하여 이벤트 적용!
+   3. main title에 gradient 적용 (background에 그라디언트 지정 후, -webkit-background-clip: text; -webkit-text-fill-color: transparent; 설정) 
 
 ## Day29
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Speed Scrubber</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 class="main__title">Control Speed 🏁</h1>
+  <div class="video__container">
+    <video class="video__player" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" loop controls></video>
+    <div class="video__speed">
+      <div class="speed__bar">1.0×</div>
+    </div>
+  </div>
+
+<script>
+    const emptyBar = document.querySelector('.video__speed');
+    const speedBar = document.querySelector('.speed__bar');
+    const video = document.querySelector('.video__player');
+    
+    function controlSpeed(e){
+        const y = e.offsetY;
+        const x = e.pageY - this.offsetTop;
+        console.log(x,y);
+        const percent = y / this.offsetHeight;
+        const min = 0.5;
+        const max = 5;
+        const height = `${Math.round(percent * 100)}%`;
+        const speed = percent * (max - min) + min;
+        
+        speedBar.style.height = height;
+        speedBar.textContent = `${speed.toFixed(1)}x`;
+        video.playbackRate = speed;
+    }
+
+    emptyBar.addEventListener('mousedown',controlSpeed);
+
+</script>
+</body>
+</html>
