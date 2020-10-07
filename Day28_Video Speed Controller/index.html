@@ -21,8 +21,6 @@
     
     function controlSpeed(e){
         const y = e.offsetY;
-        const x = e.pageY - this.offsetTop;
-        console.log(x,y);
         const percent = y / this.offsetHeight;
         const min = 0.5;
         const max = 5;

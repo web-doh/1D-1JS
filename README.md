@@ -329,9 +329,37 @@
       - classList를 remove  
    3. 하단 드롭 메뉴의 background는 따로 div 태그로 분리
       - 하단 드롭 메뉴와 nav 바 자체의 getBoundingClientRect() 속성을 이용하여 background의 크기 및 위치 지정 
-
-## Day27
    
+   ### 개선방향
+   1. Styling customize
+      - 디자인 변경 
+
+## Day27: Click and Drag
+   ### function
+   - 마우스로 이미지를 잡고 움직이면, 이미지가 x축으로 스크롤
+
+   ### wesbos의 솔루션
+   1. items에 mousedown 이벤트 발생한 경우, 
+      - 변수에 마우스가 클릭된 상태라는 것을 저장
+      - 브라우저에서 현재 마우스가 클릭된 지점의 x 좌표와 scrollbar가 x축으로 얼만큼 움직였는지 변수에 저장
+      - items classList에 'active' 추가 (css style - cursor 스타일 및 scale 변경)
+   2. items에 mouseleave과 mouseup 이벤트가 발생한 경우,
+      - 변수에 마우스가 클릭되지 않은 상태임을 저장
+      - items classList에서 'active' 제거  
+   3. items에 mousemove 이벤트가 발생한 경우,
+      - 마우스가 클릭되지 않은 상태이면 return
+      - default event 방지 
+      - 스크롤할 크기 : 마우스가 x축으로 움직인 위치와 1에서 구한 x좌표의 차이를 계산 (얼만큼 휘리릭 넘길 것인지 배수로 지정)
+      - items의 scrollLeft: 1에서 구한 scrollLeft와 스크롤할 크기의 차이를 계산
+
+   ### 개선방향
+   1. addEventListener에 직접 설정하지 않고, function으로 분리 
+      -> 중복 작성 방지, readable
+   2. Styling customize
+      - 디자인 변경 
+
+   ### 향후 사용 방법
+      - 이미지 갤러리나 음원사이트에서 최신 앨범 소개할 때 등 
 
 ## Day28: Video Speed Controller
    ### function
