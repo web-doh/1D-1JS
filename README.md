@@ -312,13 +312,13 @@
       - 디자인 변경 및 media query 추가(크기 단위: rem 사용)
       - Day16에서 진행했던 '마우스 움직이면 그림자 위치 이동' 방법을 메인 타이틀에 추가 적용 
 
-## Day25: Event Capture, Propagation, Bubbling and Once
+## Day25: Event Capture, Propagation, Bubbling and Once (20/09/24)
    ### summary
   - Event Propagation: bubbling 과 capturing 이해
   - addEventListener의 capture, once 옵션 이해
   - if (e.target !== e.currentTarget) return 구문과 stopPropagation() 차이 이해 
 
-## Day26: Stripe Follow Along Nav
+## Day26: Stripe Follow Along Nav (20/10/05)
    ### function
    - nav 메뉴에 마우스 올라갈 경우, 하단 드롭 메뉴 보이기
 
@@ -334,7 +334,7 @@
    1. Styling customize
       - 디자인 변경 
 
-## Day27: Click and Drag
+## Day27: Click and Drag (20/10/07)
    ### function
    - 마우스로 이미지를 잡고 움직이면, 이미지가 x축으로 스크롤
 
@@ -361,7 +361,7 @@
    ### 향후 사용 방법
       - 이미지 갤러리나 음원사이트에서 최신 앨범 소개할 때 등 
 
-## Day28: Video Speed Controller
+## Day28: Video Speed Controller (20/10/06)
    ### function
    - 동영상과 분리된 bar를 이용하여 동영상 재생속도를 조절
    
@@ -377,6 +377,31 @@
    2. bar에 이벤트 등록시, 마우스가 올라가서 움직일때마다 속도 변경돼서 조절 어려움 -> 'mousedown' 으로 변경하여 이벤트 적용!
    3. main title에 gradient 적용 (background에 그라디언트 지정 후, -webkit-background-clip: text; -webkit-text-fill-color: transparent; 설정) 
 
-## Day29
+## Day29: Countdown Timer (20/10/12-13)
+   ### function
+   - 설정된 시간이 적혀있는 버튼을 누르거나 입력창에 시간을 입력할 경우, 타이머가 시작되는 기능
+
+   ### wesbos의 솔루션
+   1. button에 click event 발생시, 타이머 시작 함수(startTimer()) 실행
+   2. setInterval API: 
+      - seconds --; 와 같이 숫자를 직접 1씩 차감하는 경우, 스크롤링하거나 브라우저가 멈추는 경우 등 작동이 안될 떄 에러 발생
+        -> Date.now()와 타이머 설정 시간을 이용하여, 매초마다 남은 시간을 계산해서 보여주는 방법이 나음 
+      - setInterval 실행 시, 즉시 실행 x -> 실행 전에 설정 시간 display 지정
+   3. 설정 시간 display: displayTimeLeft()
+      -  html 버튼 태그에 dataset으로 시간 속성 지정 후, textContent 이용하여 display 
+      - setInterval 실행할 때마다 displayTimeLeft(seconds) 실행
+   4. 타이머가 끝나는 시각 display : displayEndTime()
+      - new Date() & getHours(),getMinutes() 이용
+   5. form에 submit event 발생시, 
+      - preventDefault()로 기본 제출 이벤트 방지
+      - input창에 입력된 value 값 받아와서 시간 설정 후, timer 실행
+
+   ### 개선방향 
+   1. 타이머가 끝나면 알람소리가 들리도록 설정 : Audio.play(),pause()
+   2. stop 버튼 추가 : stopTimer() 함수 추가 
+      - 타이머 작동할 때 stop 버튼 클릭시, timer 정지, restart 버튼으로 변경 
+      - restart 버튼 클릭시, timer 재시작 (endTime 재설정) 
+   3. form 태그에 submit 이벤트 등록할 떄, 함수를 따로 작성하여 가독성 up!
+   4. input 작성 후 기록 남지 않도록, html에 'autocomplete=off' 추가
 
 ## Day30
