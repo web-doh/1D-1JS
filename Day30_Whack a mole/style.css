@@ -49,6 +49,7 @@ button {
     font-family: var(--font-title2);
     font-size: var(--font-big);
     color: var(--color-black);
+    margin: var(--size-large) auto;
 }
 
 /* Background */
@@ -79,12 +80,16 @@ button {
     padding: var(--size-small) var(--size-large);
     border-radius: var(--size-regular); 
     border: var(--size-regular) solid var(--color-black);
-    margin: var(--size-regular);
+    margin: var(--size-regular) auto;
 }
 
 .play__score {
     padding: var(--size-small) 11px;
     border-radius: 50%;
+}
+
+.play__timer {
+    width: 100px;
 }
 
 
