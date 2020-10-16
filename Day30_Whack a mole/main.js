@@ -9,33 +9,104 @@ const popUp = document.querySelector('#pop-up');
 const popUpText = document.querySelector('.pop-up__context');
 const replayBtn = document.querySelector('.pop-up__replay-btn');
 
-const PLAY_TIME = 10;
+const PLAY_TIME = 8;
 
 let timer;
+let lastHole;
 let isStarted = false;
+let score;
+
+const bgm = new Audio('./sound/bg.mp3');
+const badSound = new Audio('./sound/bad.mp3');
+const goodSound = new Audio('./sound/good.mp3');
+const catchMoleSound = new Audio('./sound/catch_mole.mp3');
+const alertSound = new Audio('./sound/alert.wav');
 
 // play game function
 function playGame(){
+    initGame();
     isStarted = true;
+    playSound(bgm);
     hidePopup();
     showStopBtn();
     startTimer();
+    molePopUp();
 }; 
 
 function stopGame(){
     isStarted = false;
-    stopTimer();
+    stopTimer(timer);
     hideStopBtn();
-    showPopup();
+    stopSound(bgm);
+    playSound(alertSound);
+    showPopup('RETRY?');
+}
+
+function finishGame(){
+    isStarted = false;
+    stopSound(bgm);
+    stopTimer(timer);
+    if(score >= 0 && score < 4){
+        showPopup('BAD!');
+        playSound(badSound);
+    }else if(score >=4 && score < 7){
+        showPopup('SOSO!');
+        playSound(badSound);
+    }else if(score >=7 && score < 10){
+        showPopup('GOOD JOB!');
+        playSound(goodSound);
+    }else{
+        showPopup('EXELLENT!');
+        playSound(goodSound);
+    }
 }
 
 function initGame(){
-    isStarted = false;
+    score = 0;
+    displayScore();
     showPlayBtn();
     hidePopup();
     displayTimer(0);
 }
 
+// game field setting function
+function randomIndex(){
+    const holesNum = holes.length;
+    const idx = Math.floor(Math.random()*holesNum);
+    const hole = holes[idx];
+    if (hole === lastHole) {
+        return randomIndex();
+    }
+    lastHole = hole;
+    return hole;
+}
+
+function randomInterval(min, max){
+    return Math.floor(Math.random()*(max - min) + min);
+}
+
+function molePopUp(){
+    const time = randomInterval(200,900);
+    const hole = randomIndex();
+    hole.classList.add('up');
+    setTimeout(()=>{
+    hole.classList.remove('up');
+    if(isStarted){
+        molePopUp();
+    }
+    }, time)
+}
+
+// Score function
+function displayScore(){
+    scoreBoard.textContent = score;
+}
+function updateScore(){
+    score ++;
+    playSound(catchMoleSound);
+    displayScore();
+    return score;
+}
 
 // game handler function
 function showStopBtn(){
@@ -69,6 +140,7 @@ function startTimer(){
     timer = setInterval(()=>{
         remainingSecs--;
         if(remainingSecs < 0){
+            finishGame();
             clearInterval(timer);
             return;
         }
@@ -76,17 +148,28 @@ function startTimer(){
     },1000);
 }
 
-function stopTimer(){
-    clearInterval(timer);
+function stopTimer(timerName){
+    clearInterval(timerName);
 }
 
 // pop-up function
-function showPopup(){
+function showPopup(msg){
     popUp.classList.remove('pop-up__hide');
+    popUpText.textContent = msg;
 }
 
 function hidePopup(){
     popUp.classList.add('pop-up__hide');
+}
+
+// Sound function
+function playSound(audio){
+    audio.currentTime = 0;
+    audio.play();
+}
+
+function stopSound(audio){
+    audio.pause();
 }
 
 
@@ -100,3 +183,4 @@ playBtn.addEventListener('click',() => {
 });
 
 replayBtn.addEventListener('click',initGame);
+moles.forEach(mole => mole.addEventListener('click', updateScore));
