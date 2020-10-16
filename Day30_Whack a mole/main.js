@@ -1,6 +1,6 @@
 'use stricts';
 const holes = document.querySelectorAll('.hole');
-const moles = document.querySelectorAll('.mole');
+const field = document.querySelector('.game__field');
 const playBtn = document.querySelector('.play__btn');
 const scoreBoard = document.querySelector('.play__score');
 const playTimer = document.querySelector('.play__timer');
@@ -101,7 +101,8 @@ function molePopUp(){
 function displayScore(){
     scoreBoard.textContent = score;
 }
-function updateScore(){
+function updateScore(e){
+    if(!e.isTrusted ||!e.target.matches('.mole')) return;
     score ++;
     playSound(catchMoleSound);
     displayScore();
@@ -183,4 +184,4 @@ playBtn.addEventListener('click',() => {
 });
 
 replayBtn.addEventListener('click',initGame);
-moles.forEach(mole => mole.addEventListener('click', updateScore));
+field.addEventListener('click', updateScore);
