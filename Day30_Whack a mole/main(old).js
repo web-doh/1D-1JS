@@ -1,4 +1,4 @@
-'use stricts';
+'use strict';
 const holes = document.querySelectorAll('.hole');
 const field = document.querySelector('.game__field');
 const playBtn = document.querySelector('.play__btn');
