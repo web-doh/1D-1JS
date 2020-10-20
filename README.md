@@ -404,4 +404,21 @@
    3. form 태그에 submit 이벤트 등록할 떄, 함수를 따로 작성하여 가독성 up!
    4. input 작성 후 기록 남지 않도록, html에 'autocomplete=off' 추가
 
-## Day30
+## Day30: Whack a Mole 
+   ### function
+   - 정해진 시간동안 랜덤한 간격으로 랜덤한 위치에서 두더지가 튀어나오고, 두더지를 클릭하면 점수를 획득하는 게임! 
+
+   ### wesbos의 솔루션
+   1. Math.random() 활용: 랜덤한 시간간격과 랜덤한 hole index 값 받아서 리턴
+   2. classList.add & remove + setTimeout(): 1의 리턴값을 활용
+   3. timeUp 변수 활용: 게임 시작시, true / 게임 종료시, false
+   4. 두더지에 click 이벤트 발생시, score 업데이트 함수 실행  
+
+   ### 개선방향
+   1. 종료시간을 보여주는 타이머 생성
+   2. 중지 버튼 추가 - click 이벤트 발생시, 'retry?' 문구와 함께 popup창 발생 
+   3. retry 버튼 클릭시, 게임 처음부터 재시작 
+   4. 시간 종료 후, 점수 결과 값에 따라 문구 변경되어 popup 발생
+   5. bgm 등 상황에 맞게 게임 sound 추가 
+   6. js파일 module화 하여 가독성,재활용성 up!  
+
