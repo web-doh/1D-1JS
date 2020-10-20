@@ -1,7 +1,12 @@
 'use strict';
-import * as sound from './sound.js'
+import * as sound from './sound.js';
+import { isStarted } from './game.js';
 
-export default class Field{
+export const ItemType = Object.freeze({
+    mole : 'mole'
+})
+
+export  class Field{
     constructor(){
         this.holes = document.querySelectorAll('.hole');
         this.field = document.querySelector('.game__field');
@@ -17,7 +22,7 @@ export default class Field{
     onClick = e => {
         if(e.isTrusted && e.target.matches('.mole')){ 
             sound.playCatchMole();
-            this.onItemClick && this.onItemClick('mole');  
+            this.onItemClick && this.onItemClick(ItemType.mole);  
         }
     };
 
@@ -33,14 +38,13 @@ export default class Field{
     }
 
     molePopUp(){
-    const time = randomInterval(200,900);
+    const time = randomInterval(300,900);
     const hole = this._randomIndex();
     hole.classList.add('up');
     setTimeout(()=>{
         hole.classList.remove('up');
-        if(this.isStarted){
+        if(isStarted){
             this.molePopUp();
-            console.log('mole');
         }
         }, time)
     }

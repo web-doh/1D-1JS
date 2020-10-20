@@ -1,7 +1,8 @@
 'use strict';
-import Field from './field.js';
+import { Field, ItemType } from './field.js';
 import * as sound from './sound.js';
 
+export let isStarted = false;
 export const Reason = Object.freeze({
     excellent : 'excellent',
     good : 'good',
@@ -10,29 +11,38 @@ export const Reason = Object.freeze({
     cancel : 'cancel'
 });
 
+export class GameBuilder{
+    withGameDuration(duration){
+        this.gameDuration = duration;
+        return this;
+    }
 
-export default class Game {
-    constructor(playTime) {
-        this.playBtn = document.querySelector(".play__btn");
-        this.scoreBoard = document.querySelector(".play__score");
-        this.playTimer = document.querySelector(".play__timer");
+    build(){
+        return new Game(this.gameDuration);
+    }
+}
+
+class Game {
+    constructor(gameDuration) {
+        this.gameDuration = gameDuration;
 
         this.timer = undefined;
-        this.isStarted = false;
         this.score = 0;
-        this.playTime = playTime;
-        
+
+        this.scoreBoard = document.querySelector(".play__score");
+        this.playTimer = document.querySelector(".play__timer");
+        this.playBtn = document.querySelector(".play__btn");
+
         this.playBtn.addEventListener('click',() => {
-            if(!this.isStarted){
+            if(!isStarted){
                 this.start();
             }else{
-                this.stop();
+                this.stop(Reason.cancel);
             }
         });
 
         this.gameField = new Field();
         this.gameField.setClickListener(this.onItemClick);
-
     }
 
     setGameStopListener(onGameStop){
@@ -42,7 +52,7 @@ export default class Game {
     
 
     onItemClick = item => {
-        if(item === 'mole'){
+        if(item === ItemType.mole){
             this.score ++;
             this.displayScore();
         }
@@ -50,22 +60,21 @@ export default class Game {
 
     start(){
         this.init();
-        this.isStarted = true;
+        isStarted = true;
         sound.playBgm();
         this.showStopBtn();
         this.startTimer();
         this.gameField.molePopUp();
     }; 
     
-    stop(){
-        this.isStarted = false;
+    stop(reason){
+        isStarted = false;
+        sound.stopBgm();
         this.stopTimer(this.timer);
         this.hideStopBtn();
-        sound.stopBgm();
-        sound.playAlert();
-        this.onGameStop && this.onGameStop('cancel');
+        this.onGameStop && this.onGameStop(reason);
     }
- 
+
     init(){
         this.score = 0;
         this.displayScore();
@@ -73,27 +82,8 @@ export default class Game {
         this.displayTimer(0);
     }
 
-    finish(){
-        this.isStarted = false;
-        sound.stopBgm();
-        this.stopTimer(this.timer);
-        if(this.score >= 0 && this.score < 4){
-            this.onGameStop && this.onGameStop('bad');
-            sound.playBad();
-        }else if(this.score >=4 && this.score < 7){
-            this.onGameStop && this.onGameStop('soso');
-            sound.playBad();
-        }else if(this.score >=7 && this.score < 10){
-            this.onGameStop && this.onGameStop('good');
-            sound.playGood();
-        }else{
-            this.onGameStop && this.onGameStop('excellent');
-            sound.playGood();
-        }
-    }
     
-    
-   // Score function
+// Score function
     displayScore(){
     this.scoreBoard.textContent = this.score;
 }
@@ -125,22 +115,27 @@ export default class Game {
 
 // timer function
     startTimer(){
-    let remainingSecs = this.playTime;
+    let remainingSecs = this.gameDuration;
     this.displayTimer(remainingSecs);
     this.timer = setInterval(()=>{
-        remainingSecs--;
-        if(remainingSecs < 0){
-            this.finish();
+        if(remainingSecs <= 0){
             clearInterval(this.timer);
+            if(this.score >= 0 && this.score < 4){
+                this.stop(Reason.bad);
+            }else if(this.score >=4 && this.score < 7){
+                this.stop(Reason.soso);
+            }else if(this.score >=7 && this.score < 10){
+                this.stop(Reason.good);
+            }else{
+                this.stop(Reason.excellent);
+            }
             return;
         }
-        this.displayTimer(remainingSecs);
+        this.displayTimer(--remainingSecs);
     },1000);
 }
 
     stopTimer(timerName){
-    clearInterval(timerName);
+        clearInterval(timerName);
 }
-
-
 }
