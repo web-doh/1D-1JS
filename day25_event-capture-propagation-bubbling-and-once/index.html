@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+
+    div {
+      cursor: pointer;
+    }
+
+    .one {
+      width: 900px;
+      height: 600px;
+      background: greenyellow;
+    }
+
+    .two {
+      width: 75%;
+      height: 75%;
+      margin: auto;
+      transform: translateY(12.5%);
+      background: yellow;
+    }
+
+    .three {
+      width: 50%;
+      height: 50%;
+      margin: auto;
+      transform: translateY(40%);
+      background: skyblue;
+    }
+
+    button {
+      cursor: pointer;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-125%, -75%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="one">one
+    <div class="two">two
+      <div class="three">three
+        <button class="click me">
+          Click me
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const boxes = document.querySelectorAll('div');
+    const one = document.querySelector('.one');
+    const two = document.querySelector('.two');
+    const three = document.querySelector('.three');
+    const btn = document.querySelector('button');
+  
+    function alertText(e){
+      // if (e.target !== e.currentTarget) {
+      //     return;
+      //   }  => target에만 이벤트 발생 
+        alert(`You clicked: '${e.target.classList.value}!' & event happened: '${e.currentTarget.classList.value}' too!`)
+        console.log(`${e.currentTarget.classList.value}`);
+        e.stopPropagation(); 
+        // => 현재 이벤트 이후의 전파를 방지(target과 currentTarget이 동일하지 않더라도 이벤트 발생)
+    }
+    
+    
+    btn.addEventListener('click',alertText);
+    // one.addEventListener('click',alertText);
+    // two.addEventListener('click',alertText);
+    // three.addEventListener('click',alertText);
+
+    boxes.forEach(box => box.addEventListener('click', alertText, {
+    capture: true, // capturing 방식으로 이벤트 실행 (기본: false -> bubbling)
+    once: true
+  }))
+  </script>
+
+</body>
+
+</html>

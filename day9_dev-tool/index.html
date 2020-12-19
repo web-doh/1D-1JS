@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+     console.log('Regular log message!');
+
+    // 문자열 치환 
+    // %o : 객체 / %d,%i : 정수부분 / %s : 문자열 / %f : 부동소수점 수
+     console.log("Hello, this is %s string and those are %d and %f!", "💯", 2.732, 2.732);
+    
+    // Styled
+     console.log("%c WOW, Look at this!!","font-size: 2.5rem; background:yellowgreen; color:blue; text-shadow: 10px 10px 0 white");
+
+    // warning!
+    console.warn('WATCH OUT!%s','⚠️⚠️⚠️');
+
+    // Error :|
+    console.error('Oh Error~!!%s','ㅠㅠ');
+
+    // Info
+    const obj = { name: 'kitty'
+                 , age: 3
+                 , color: 'blonde'};
+                 
+     console.info('Info: Octopus%s is really smart','🐙');
+     console.info(`My cat ${obj.name}'s info:`,obj);
+     console.info('Info: info line is little bit smaller than others');
+
+    // Testing
+    const p = document.querySelector('p');
+    console.assert( p.style.color === 'rgb(186, 218, 85)', "No, I'm black color!");
+    console.assert( p.classList.contains('open'), "No, I don't have that ~ 😒");
+
+    // clearing
+    // console.clear();
+
+    // Viewing DOM Elements -> properties 쉽게 확인
+    console.log(p);
+    console.dir(p);
+
+    // Grouping together
+    dogs.forEach(dog => {
+      console.groupCollapsed(`🐶 ${dog.name}`); // group()으로 할 경우, 모든 정보 펼쳐짐
+      console.log(`This dog is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.warn('Do not feed a lot🍗');
+      console.groupEnd();
+    })
+
+    // counting
+    let user = "";
+
+    function greet(){
+      console.count(user);
+      return "hi" + user;
+    }
+
+    user="Cat";
+    greet();greet();
+    user="Airplane";
+    greet();
+    console.count("Lion");
+    console.count("Cat");
+    console.count("Cat");
+    console.count("Lion");
+    greet();
+    console.count("Cat");
+
+    // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wesbos')
+      .then(reponse => reponse.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    console.table(dogs);
+
+  </script>
+</body>
+</html>

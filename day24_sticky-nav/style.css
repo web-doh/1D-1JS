@@ -1,0 +1,122 @@
+:root {
+  --font-main: 'Baloo Tammudu 2', cursive;
+}
+
+* {
+  box-sizing: border-box;
+  cursor: default;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: blue;
+}
+
+p {
+  font-size: 1.25rem;
+}
+
+#header {
+  background: center/cover no-repeat url(img/timon-studler-4qmXhKJhSo4-unsplash.jpg);
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: white;
+  padding: 1.5rem 5rem 0;
+  background-color: rgba(0,0,255,0.8);
+  transform: skewX(-15deg);
+  box-shadow: .5rem .5rem rgba(255, 255, 0, 0.5),
+              1rem 1rem rgba(255,255,255,0.5);
+}
+
+#navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  transition: all 500ms ease-in-out;
+  z-index: 1;
+}
+
+.fixed#navbar{
+  position: fixed;
+  top: 0;
+}
+
+
+#navbar a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 1.2rem 1.5rem .4rem;
+  font-size: 1.5rem;
+  color: blue;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+}
+
+#navbar a:hover {
+  color: red;
+}
+
+.navbar__logo {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 500ms ease-in-out;
+}
+
+.fixed .navbar__logo {
+  max-width: 200px;
+}
+
+.navbar__menu {
+  flex: 1;
+  list-style: none;
+  background-color: yellow;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar__item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 75%;
+  max-width: 67.5rem;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background-color: white;
+  border-radius: .5rem;
+  text-indent: 2.5rem;
+  transform: scale(0.98);
+  transition: all 500ms ease-in-out;
+}
+
+.fixed + .container {
+  transform: scale(1);
+}
+
+.main__image {
+  width: 90%;
+  margin: 0 5%;
+}
+
+@media screen and (max-width:48rem) {
+  html {
+    font-size: 12px;
+  }
+}

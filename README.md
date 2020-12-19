@@ -310,6 +310,7 @@ Wes Bos : https://javascript30.com/
     => addEventListener('click') 등록
 3.  화면에 각각의 비디오 재생시간과 총 합계가 표시되지 않음
     => textContent 속성 이용하여 display 되도록
+4.  Styling customize: '90s website' theme
 
 ## Day19: Web cam fun (20/12/18)
 

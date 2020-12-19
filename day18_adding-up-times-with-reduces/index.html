@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Videos</title>
+    <style>
+      body {
+        font-family: monospace;
+      }
+
+      .videos__list {
+        position: relative;
+        font-size: 1rem;
+        padding: 0.25rem;
+        transition: scale 300ms ease-in;
+      }
+
+      .videos__list > span {
+        font-size: 0.8rem;
+      }
+
+      .videos__list:hover {
+        cursor: pointer;
+        transform: scale(1.01);
+      }
+
+      .remove__list {
+        font-style: italic;
+      }
+
+      .remove__list::after {
+        position: absolute;
+        content: "";
+        width: 8rem;
+        height: 1px;
+        background-color: black;
+        left: 0;
+        top: 0.8rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header id="head">
+      <h1 class="head__title">My Video Play Time</h1>
+      <p>Click the Video to Remove!</p>
+    </header>
+
+    <ul id="videos">
+      <li class="videos__list" data-time="5:43">Video 1</li>
+      <li class="videos__list" data-time="2:33">Video 2</li>
+      <li class="videos__list" data-time="3:45">Video 3</li>
+      <li class="videos__list" data-time="0:47">Video 4</li>
+      <li class="videos__list" data-time="5:21">Video 5</li>
+      <li class="videos__list" data-time="6:56">Video 6</li>
+      <li class="videos__list" data-time="3:46">Video 7</li>
+      <li class="videos__list" data-time="5:25">Video 8</li>
+      <li class="videos__list" data-time="3:14">Video 9</li>
+      <li class="videos__list" data-time="3:31">Video 10</li>
+      <li class="videos__list" data-time="5:59">Video 11</li>
+      <li class="videos__list" data-time="3:07">Video 12</li>
+      <li class="videos__list" data-time="11:29">Video 13</li>
+      <li class="videos__list" data-time="8:57">Video 14</li>
+      <li class="videos__list" data-time="5:49">Video 15</li>
+      <li class="videos__list" data-time="5:52">Video 16</li>
+      <li class="videos__list" data-time="5:50">Video 17</li>
+      <li class="videos__list" data-time="9:13">Video 18</li>
+      <li class="videos__list" data-time="11:51">Video 19</li>
+      <li class="videos__list" data-time="7:58">Video 20</li>
+      <li class="videos__list" data-time="4:40">Video 21</li>
+      <li class="videos__list" data-time="4:45">Video 22</li>
+      <li class="videos__list" data-time="6:46">Video 23</li>
+      <li class="videos__list" data-time="7:24">Video 24</li>
+      <li class="videos__list" data-time="7:12">Video 25</li>
+      <li class="videos__list" data-time="5:23">Video 26</li>
+      <li class="videos__list" data-time="3:34">Video 27</li>
+      <li class="videos__list" data-time="8:22">Video 28</li>
+      <li class="videos__list" data-time="5:17">Video 29</li>
+      <li class="videos__list" data-time="3:10">Video 30</li>
+      <li class="videos__list" data-time="4:43">Video 31</li>
+      <li class="videos__list" data-time="19:43">Video 32</li>
+      <li class="videos__list" data-time="0:47">Video 33</li>
+      <li class="videos__list" data-time="0:47">Video 34</li>
+      <li class="videos__list" data-time="3:14">Video 35</li>
+      <li class="videos__list" data-time="3:59">Video 36</li>
+      <li class="videos__list" data-time="2:43">Video 37</li>
+      <li class="videos__list" data-time="4:17">Video 38</li>
+      <li class="videos__list" data-time="6:56">Video 39</li>
+      <li class="videos__list" data-time="3:05">Video 40</li>
+      <li class="videos__list" data-time="2:06">Video 41</li>
+      <li class="videos__list" data-time="1:59">Video 42</li>
+      <li class="videos__list" data-time="1:49">Video 43</li>
+      <li class="videos__list" data-time="3:36">Video 44</li>
+      <li class="videos__list" data-time="7:10">Video 45</li>
+      <li class="videos__list" data-time="3:44">Video 46</li>
+      <li class="videos__list" data-time="3:44">Video 47</li>
+      <li class="videos__list" data-time="4:36">Video 48</li>
+      <li class="videos__list" data-time="3:16">Video 49</li>
+      <li class="videos__list" data-time="1:10">Video 50</li>
+      <li class="videos__list" data-time="6:10">Video 51</li>
+      <li class="videos__list" data-time="2:14">Video 52</li>
+      <li class="videos__list" data-time="3:44">Video 53</li>
+      <li class="videos__list" data-time="5:05">Video 54</li>
+    </ul>
+
+    <div id="total">
+      <h2 class="total__time">Total :</h2>
+      <button class="total__calc-btn">Calculate</button>
+    </div>
+
+    <script>
+      "use stricts";
+      const videos = document.querySelector("#videos");
+      const videoList = Array.from(document.querySelectorAll(".videos__list"));
+      const totalTime = document.querySelector(".total__time");
+      const calcBtn = document.querySelector(".total__calc-btn");
+
+      // remove 되지 않은 video들의 총 재생시간 계산 및 display
+      function filterList() {
+        return videoList.filter(
+          (video) => !video.className.includes("remove__list")
+        );
+      }
+
+      function videoListToTime() {
+        return filterList()
+          .map((video) => video.dataset.time)
+          .map((time) => {
+            const [mins, secs] = time.split(":").map(parseFloat);
+            return mins * 60 + secs;
+          });
+      }
+
+      function calcTotalTime() {
+        const totalSecs = videoListToTime().reduce(
+          (calc, prev) => (calc += prev)
+        );
+        const hour = parseInt(totalSecs / 3600);
+        const min = parseInt(totalSecs / 60) % 60;
+        const sec = totalSecs % 60;
+
+        totalTime.textContent = `Total : ${hour} : ${
+          min > 9 ? min : "0" + min
+        } : ${sec > 9 ? sec : "0" + sec}`;
+      }
+
+      // video list 삭제 or 삭제 취소
+      function toggleList(e) {
+        if (e.target.nodeName === "LI") {
+          e.target.classList.toggle("remove__list");
+        }
+      }
+
+      // video list에 각각의 재생시간 표기
+      function displayVideoTime() {
+        videoList.forEach((video) => {
+          const span = document.createElement("span");
+          span.textContent = `(${video.dataset.time})`;
+          video.append(span);
+        });
+      }
+
+      // event handler
+      displayVideoTime();
+      videos.addEventListener("click", toggleList);
+      calcBtn.addEventListener("click", calcTotalTime);
+    </script>
+  </body>
+</html>

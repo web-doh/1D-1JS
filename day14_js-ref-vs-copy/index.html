@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Reference VS Copy</title>
+</head>
+<body>
+
+  <script>
+    // 1. Primitive Type :  strings, numbers and booleans
+    /* 저장 방법 도식화
+       var1 -> value1
+       var2 -> value2 */ 
+    // 메모리 상에 고정된 크기로 저장, 해당 변수가 원시 데이터 값 보관 
+    //  => 변수 선언 & 초기화 & 할당시, 값이 저장된 메모리에 직접 접근 
+    
+    let age = 100;
+    let age2 = age;        // value1 과 value2가 동일한 값으로 저장 
+    console.log(age,age2); // 100 100
+    age = 200;             // value1만 변경 
+    console.log(age,age2); // 200 100
+
+    let name = 'Doh';
+    let name2 = name;
+    console.log(name,name2); // Doh Doh
+    name = 'poh';
+    console.log(name,name2); // poh Doh
+    name2 = 'k';
+    console.log(name,name2); // poh k
+
+
+     // 2. Reference Type :  Object - arr, func, RegExp
+    /* 저장 방법 도식화
+       array1 -> ref (read-only) -> []
+       array2 /                        */ 
+    // 변수의 값이 저장된 heap 메모리의 주소값을 저장 
+    //  => 변수 선언 & 초기화 & 할당시, 값이 저장된 메모리에 직접 접근 X, 메모리 주소를 이용해 값에 접근
+    
+    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+    const team = players; // 동일한 메모리 주소를 공유 
+
+    team[3] = 'Bos';      // 동이한 메모리 주소내 값 변경 
+    console.log(team);    // ["Wes", "Sarah", "Ryan", "Bos"]
+    console.log(players); // ["Wes", "Sarah", "Ryan", "Bos"]
+    
+    // - 값을 변경하고 싶지 않는 경우 
+    // 1. slice();
+    const team2 = players.slice();
+    team2[3] = 'Kelly';
+    console.log(team2); //["Wes", "Sarah", "Ryan", "Kelly"] 
+
+    // 2. concat();
+    const team3 = [].concat(players);
+    team3[3]='Tom';
+    console.log(team3); //["Wes", "Sarah", "Ryan", "Tom"] 
+
+    // 3. ES6 spread
+    const team4 = [...players];
+    team4[3] = 'Hailey';
+    console.log(team4); //["Wes", "Sarah", "Ryan", "Hailey"]
+    const team5 = Array.from(players);
+    team5[3] = 'James';
+    console.log(team5); //["Wes", "Sarah", "Ryan", "James"]
+
+    // now when we update it, the original one isn't changed
+    console.log(players); //["Wes", "Sarah", "Ryan", "Bos"]
+
+    // The same thing goes for objects, let's say we have a person object
+
+    // with Objects
+    const person = {
+      name: 'Wes Bos',
+      age: 80
+    };
+
+    // and think we make a copy:
+    const captain = person;
+    captain.num = 100;
+    console.log(person,captain); // {name: "Wes Bos", age: 80, num: 100} 동일
+
+    // how do we take a copy instead?
+    const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+    console.log(person,cap2); //{name: "Wes Bos", age: 80, num: 100}, {name: "Wes Bos", age: 12, num: 100, number: 99}
+
+    // We will hopefully soon see the object ...spread
+    const cap3 = {...person};
+    cap3.num = 120;
+    console.log(cap3); //{name: "Wes Bos", age: 80, num: 120}
+
+    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+    const wes = {
+      name: 'Wes',
+      age: 100,
+      social: {
+        twitter: '@wesbos',
+        facebook: 'wesbos.developer'
+      }
+    };
+    console.clear();
+    console.log(wes);
+    
+    const dev = Object.assign({}, wes);
+    dev.name = 'winnie';
+    const dev2 = JSON.parse(JSON.stringify(wes));
+    dev2.name = 'kelly';
+    console.log(dev);
+    console.log(dev2);
+    console.log(wes); // {name: "Wes", age: 100, social: {…}}
+
+  </script>
+
+</body>
+</html>
