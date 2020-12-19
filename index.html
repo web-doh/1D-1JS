@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1Day 1JS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 class="title">1Day 1JS</h1>
+    <ul class="project__list">
+      <li class="project__item">
+        <a class="project__title" href="day1_drum-kit"></a>
+        <iframe src="day1_drum-kit" scrolling="no"></iframe>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day2_clock"></a>
+        <iframe src="day2_clock" scrolling="no"></iframe>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day3_css-variables"></a>
+        <iframe src="day3_css-variables" scrolling="no"></iframe>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day4_array-cardio"></a>
+        <iframe src="day4_array-cardio" scrolling="no"></iframe>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day5_flex-panel-gallery"></a>
+        <iframe src="day5_flex-panel-gallery" scrolling="no"></iframe>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day6_type-ahead"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day7_array-cardio2"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day8_fun-with-html-canvas"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day9_dev-tool"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day10_hold-shift-and-checkbox"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day11_custom-video-player"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day12_key-sequence-detect"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day13_slide-in-onscroll"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day14_js-ref-vs-copy"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day15_local-storage"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day16_mouse-move-shadow"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day17_sort-without-articles"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day18_adding-up-times-with-reduces"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day19_webcam-fun"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day20_speech-detection"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day21_geolocation"></a>
+      </li>
+      <li class="project__item">
+        <a
+          class="project__title"
+          href="day22_follow-along-link-highlighter"
+        ></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day23_speech-synthesis"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day24_sticky-nav"></a>
+      </li>
+      <li class="project__item">
+        <a
+          class="project__title"
+          href="day25_event-capture-bropagation-bubbling-and-once"
+        ></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day26_stripe-follow-along-nav"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day27_click-and-drag"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day28_video-speed-controller"></a>
+      </li>
+      <li class="project__item">
+        <a class="project__title" href="day29_countdown-timer"></a>
+      </li>
+      <li class="project__project__item">
+        <a class="project__title" href="day30_whack-a-mole"></a>
+      </li>
+    </ul>
+
+    <script>
+      const projectsLink = document.querySelectorAll(".project__title");
+      projectsLink.forEach((project) => {
+        const regExp = /-/g;
+        const title = project.href
+          .split("/")[3]
+          .replace("_", "] ")
+          .replace(regExp, " ");
+        project.textContent = `[${title}`;
+      });
+    </script>
+  </body>
+</html>
