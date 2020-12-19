@@ -8,6 +8,27 @@
   </head>
   <body>
     <h1 class="title">1Day 1JS</h1>
+    <table class="project" border="1">
+      <thead>
+        <tr>
+          <th class="project__header">Day</th>
+          <th class="project__header">WesBos</th>
+          <th class="project__header">Doh</th>
+          <th class="project__header">Git</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="project__item">
+          <td class="project__day">Day</td>
+          <td class="project__wesbos"></td>
+          <td class="project__doh">
+            <a class="project__title" href="day1_drum-kit"></a>
+          </td>
+          <td class="project__git">Git</td>
+        </tr>
+      </tbody>
+    </table>
+
     <ul class="project__list">
       <li class="project__item">
         <a class="project__title" href="day1_drum-kit"></a>
@@ -102,7 +123,7 @@
       <li class="project__item">
         <a class="project__title" href="day29_countdown-timer"></a>
       </li>
-      <li class="project__project__item">
+      <li class="project__item">
         <a class="project__title" href="day30_whack-a-mole"></a>
       </li>
     </ul>
@@ -110,12 +131,14 @@
     <script>
       const projectsLink = document.querySelectorAll(".project__title");
       projectsLink.forEach((project) => {
+        const parent = project.parentElement;
+        const day = parent.querySelector(".project__day");
         const regExp = /-/g;
         const title = project.href
           .split("/")[3]
           .replace("_", "] ")
           .replace(regExp, " ");
-        project.textContent = `[${title}`;
+        day.textContent = `[${title}`;
       });
     </script>
   </body>

@@ -219,7 +219,8 @@ Wes Bos : https://javascript30.com/
 
 1. pressed keyboard를 배열로 받기
 2. splice로 secret code의 길이를 넘지 않게 배열 길이 조절
-3. join으로 배열을 text화하여 code와 pressed 문구 비교 후,   정답일 경우 - console 창으로 정답 축하 문자 출력 및 화면에 유니콘 스티커 출력
+3. join으로 배열을 text화하여 code와 pressed 문구 비교 후,   
+   정답일 경우 - console 창으로 정답 축하 문자 출력 및 화면에 유니콘 스티커 출력
 
 ### 개선방향
 
@@ -241,8 +242,8 @@ Wes Bos : https://javascript30.com/
 ### Wesbos의 솔루션
 
 1. Function checkSlide: window에 scroll 이벤트를 등록하여, 일정 위치만큼 스크롤되면 이미지가 보이도록 처리
-   1. 일정 위치 계산 : img의 offsetTop,height 등 / window의 scrollY,innerHeight
-   2. 값 비교 : img와 window의 속성 비교(조건문)에 따라 이미지가 보여지는 style 속성을 지닌 class 추가 or 삭제
+   - 일정 위치 계산 : img의 offsetTop,height 등 / window의 scrollY,innerHeight
+   - 값 비교 : img와 window의 속성 비교(조건문)에 따라 이미지가 보여지는 style 속성을 지닌 class 추가 or 삭제
 2. Function debounce: scroll 이벤트가 일어나도 일정 시간 간격으로만 func 작동
    - setTimeout, apply() 등
 
@@ -338,10 +339,10 @@ Wes Bos : https://javascript30.com/
 
 ### 개선방향
 
-1.  video list에서 video를 삭제 혹은 삭제 취소가 가능하도록 변경
+1.  video list에서 video를 삭제 혹은 삭제 취소가 가능하도록 변경   
     => filter(): classList에 'remove_list'가 포함된 경우 계산에서 제외
 2.  calculate 버튼 추가하여, 리스트 변경되어도 재계산이 가능하도록 변경
-3.  화면에 각각의 비디오 재생시간과 총 합계가 표시되지 않음
+3.  화면에 각각의 비디오 재생시간과 총 합계가 표시되지 않음   
     => textContent 이용하여 화면에 표시되도록 변경
 4.  Styling customize: '90s website' theme
 
@@ -362,7 +363,8 @@ Wes Bos : https://javascript30.com/
 
 ### 개선방향
 
-1. 각각 다른 시간 간격으로 영상 데이터를 받아 6개의 분할된 화면에 전달하고, 화면마다 서로 다른 필터를 적용해서 보여주는 재미 요소 추가~!
+1. 각각 다른 시간 간격으로 영상 데이터를 받아 6개의 분할된 화면에 전달하고,    
+   화면마다 서로 다른 필터를 적용해서 보여주는 재미 요소 추가~!
 2. 필터 추가: 흑백, 반전
 3. 셔터 버튼을 누르면 6개 화면 중에 랜덤하게 화면이 선택되어 사진 촬영
 4. Styling customize
@@ -391,7 +393,7 @@ Wes Bos : https://javascript30.com/
 
 1. 영어로 설정된 언어를 한국어로 변경 (recognition.lang = 'ko-KR';)
 2. 특정 욕설을 말하면 '사랑해'라는 텍스트로 대체해서 보여주도록 regexp 추가
-3. Wesbos의 솔루션 중 2,3번의 기능(원래 addEventListener에 바로 등록)을 함수(audioTrans)로 분리하여 가독성 높이기
+3. Wesbos의 솔루션 중 2,3번의 기능을 함수(audioTrans)로 분리하여 가독성 높이기
 4. 화면에서 글자가 넘칠 때, 현재 실행 중인 텍스트에 포커스되도록 -> scrollIntoView() 추가
 5. Styling customize
 
@@ -425,7 +427,8 @@ Wes Bos : https://javascript30.com/
 ### Wesbos의 솔루션
 
 1.  createElement로 하이라이트 색상이 적용될 span 컨테이너를 생성
-2.  addEventListener로 'mouseenter' 이벤트가 진행되면 highlightLink 함수가 실행되도록 설정   -> a 태그 전체에 forEach문으로 등록
+2.  addEventListener로 'mouseenter' 이벤트가 진행되면 highlightLink 함수가 실행되도록 설정   
+    -> a 태그 전체에 forEach문으로 등록
 3.  getBoundingClientRect()로 이벤트가 발생된 하이퍼링크 텍스트의 위치, 크기 등의 속성을 가져옴
 4.  하이라이터가 이벤트 발생 위치로 이동하도록 3번에서 얻은 속성을 이용하여 position 설정
 
@@ -435,7 +438,7 @@ Wes Bos : https://javascript30.com/
 2.  highlight 될 때, 글자 색상도 변경되도록 classList 추가 
 3.  Styling customize: '90s computer' theme, 반응형
 
-- highlighter가 이리저리 옮겨지는 애니메이션 효과를 원하지 않는다면,
+- highlighter가 이리저리 옮겨지는 애니메이션 효과를 원하지 않는다면,   
   span 컨테이너를 추가로 만들지 않고, 선택된 a tag에 classList를 추가하거나 삭제하는 방식이 더 간단하기도..!
 
 ---
@@ -547,7 +550,7 @@ Wes Bos : https://javascript30.com/
 
 ### 향후 사용 방법
 
-      - 이미지 갤러리나 음원사이트에서 최신 앨범 소개할 때 등
+- 이미지 갤러리나 음원사이트에서 최신 앨범 소개할 때 등
 
 ---
 
