@@ -13,27 +13,24 @@
       }
 
       body {
-        background: black;
+        background: white;
         font-family: "Noto Sans KR", sans-serif;
         font-weight: 300;
-        font-size: 20px;
-        font-style: italic;
+        font-size: 18px;
         text-align: center;
       }
-
-      #title {
-        color: white;
-        margin: 3rem auto;
+      
+      #container {
+        max-width: 375px;
+        height: 812px;
+        margin: 32px auto;
+        padding: 16px;
+        background: center/contain no-repeat url(iphone.png);
       }
 
       .words {
-        max-width: 400px;
-        height: 600px;
-        margin: 0 auto;
-        padding: 1rem;
-        background: white;
-        border-radius: 3px;
-        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+        max-height: 600px;
+        margin: 108px 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -45,22 +42,31 @@
         display: none;
       }
 
-      p {
-        text-align: right;
-        margin: 0.5rem auto;
-        margin-right: 1rem;
-        padding: 0.5rem 1.5rem;
+      .transcript {
+        text-align: left;
+        max-width: 200px;
+        margin: 4px auto;
+        margin-right: 4px;
+        padding: 4px 12px;
         position: relative;
         color: white;
-        background: royalblue;
+        background: #bed2da;
         border-radius: 4px;
+      }
+
+      #ment {
+        color: #bed2da;
+        margin: 3rem auto;
+        font-weight: 500;
+        font-size: 32px;
       }
     </style>
   </head>
   <body>
-    <h1 id="title">너의 목소리가 보여</h1>
-    <div class="words" contenteditable></div>
-
+    <section id="container">
+      <div class="words" contenteditable></div>
+    </section> 
+    <p id="ment">듣고 있습니다</p>
     <script>
       window.SpeechRecognition =
         window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -81,6 +87,7 @@
         if (e.results[0].isFinal) {
           const p = document.createElement("p");
           p.textContent = purifyScript;
+          p.classList.add('transcript');
           words.append(p);
           p.scrollIntoView();
         }
