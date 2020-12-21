@@ -32,15 +32,22 @@
 
   <div class="wrapper">
     <h2>LOCAL TAPAS</h2>
-    <p></p>
+    
     <ul class="plates">
       <li>Loading Tapas...</li>
     </ul>
+
     <form class="add-items">
-      <input type="text" name="item" placeholder="Item Name" required>
+      <input type="text" name="item" placeholder="Item Name" autocomplete="off" required>
       <input type="submit" value="+ Add Item">
     </form>
-    <input type="checkbox" id="check-all" } />
+    
+    <div class="btn-container">
+      <input type="checkbox" id="check-all" name="check-all" />
+    <label for="check-all">check all</label>
+
+    <button id="clear-all">clear all</button>
+    </div>
   </div>
 
   <script>
@@ -48,6 +55,7 @@
     const itemsList = document.querySelector('.plates');
     const items = JSON.parse(localStorage.getItem('items')) || [];
     const checkAll = document.querySelector('#check-all');
+    const clearAll = document.querySelector('#clear-all');
 
     function addItem(e) {
       e.preventDefault();
@@ -57,26 +65,32 @@
         done: false
       }
       items.push(item);
-      localStorage.setItem('items', JSON.stringify(items));
+      saveItem();
       displayItem(items, itemsList);
       addItems.reset();
     }
+
 
     function displayItem(plates, platesList) {
       platesList.innerHTML = plates.map((plate, i) => {
         return `
       <li>
-          <input type = "checkbox" data-index = "${i}"" id = "item${i}" ${plate.done ? 'checked' : ''}/>
+          <input type = "checkbox" data-index = "${i}" id = "item${i}" ${plate.done ? 'checked' : ''}/>
           <label for = "item${i}">${plate.text}</label>
+          <button type ="button" data-index = "${i}" class="delete-btn">-</button>
       </li>`
       }).join('');
+    }
+
+    function saveItem() {
+      localStorage.setItem('items', JSON.stringify(items));
     }
 
     function toggleDone(e) {
       if (e.target.nodeName !== "INPUT") return;
       const index = e.target.dataset.index;
       items[index].done = !items[index].done;
-      localStorage.setItem('items', JSON.stringify(items));
+      saveItem();
       displayItem(items, itemsList);
     }
 
@@ -88,13 +102,28 @@
           item.done = false;
         }
       });
-      localStorage.setItem('items', JSON.stringify(items));
+      saveItem();
       displayItem(items, itemsList);
+    }
+    
+    function deleteItem(e){
+      if (e.target.nodeName !== "BUTTON") return;
+      const index = e.target.dataset.index;
+      items.splice(index,1);
+      saveItem();
+      location.reload(true);
+    }
+
+    function clearAllItems(){
+      localStorage.clear();
+      location.reload(true);
     }
 
     addItems.addEventListener('submit', addItem);
     itemsList.addEventListener('click', toggleDone);
     checkAll.addEventListener('click', makeAllDone);
+    clearAll.addEventListener('click', clearAllItems);
+    itemsList.addEventListener('click', deleteItem);
 
     displayItem(items, itemsList);
   </script>
