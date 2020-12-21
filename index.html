@@ -7,139 +7,64 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 class="title">1Day 1JS</h1>
-    <table class="project" border="1">
-      <thead>
-        <tr>
-          <th class="project__header">Day</th>
-          <th class="project__header">WesBos</th>
-          <th class="project__header">Doh</th>
-          <th class="project__header">Git</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="project__item">
-          <td class="project__day">Day</td>
-          <td class="project__wesbos"></td>
-          <td class="project__doh">
-            <a class="project__title" href="day1_drum-kit"></a>
-          </td>
-          <td class="project__git">Git</td>
-        </tr>
-      </tbody>
-    </table>
+    <h1 class="main-title">1Day 1JS Challenge</h1>
 
-    <ul class="project__list">
-      <li class="project__item">
-        <a class="project__title" href="day1_drum-kit"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day2_clock"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day3_css-variables"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day4_array-cardio"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day5_flex-panel-gallery"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day6_type-ahead"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day7_array-cardio2"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day8_fun-with-html-canvas"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day9_dev-tool"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day10_hold-shift-and-checkbox"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day11_custom-video-player"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day12_key-sequence-detect"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day13_slide-in-onscroll"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day14_js-ref-vs-copy"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day15_local-storage"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day16_mouse-move-shadow"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day17_sort-without-articles"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day18_adding-up-times-with-reduces"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day19_webcam-fun"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day20_speech-detection"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day21_geolocation"></a>
-      </li>
-      <li class="project__item">
-        <a
-          class="project__title"
-          href="day22_follow-along-link-highlighter"
-        ></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day23_speech-synthesis"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day24_sticky-nav"></a>
-      </li>
-      <li class="project__item">
-        <a
-          class="project__title"
-          href="day25_event-capture-propagation-bubbling-and-once"
-        ></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day26_stripe-follow-along-nav"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day27_click-and-drag"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day28_video-speed-controller"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day29_countdown-timer"></a>
-      </li>
-      <li class="project__item">
-        <a class="project__title" href="day30_whack-a-mole"></a>
-      </li>
-    </ul>
+    <ul class="project__list"></ul>
 
     <script>
-      const projectsLink = document.querySelectorAll(".project__title");
-      projectsLink.forEach((project) => {
-        const parent = project.parentElement;
-        const day = parent.querySelector(".project__day");
-        const regExp = /-/g;
-        const title = project.href
-          .split("/")[3]
-          .replace("_", "] ")
-          .replace(regExp, " ");
-        day.textContent = `[${title}`;
-      });
+      const ul = document.querySelector('.project__list');
+      const projectList = {
+        day1: { title:'Drum Kit', description: '키보드를 누르면 드럼 사운드 on' },
+        day2: { title: 'Analog Clock', description: '아날로그 시계로 현재 시각 보여주기'},
+        day3: { title: 'CSS Variables', description: '슬라이더를 이용해서 사이트 내 스타일 요소를 변경하는 기능'},
+        day4: { title: 'Array Cardio', description: 'array의 api 사용 능력 향상을 위한 훈련!<br/> - filter(), map(), sort(), reduce() 편'},
+        day5: { title: 'Flex Panel Gallery', description: 'Panel을 클릭하면 펼쳐지고, 다시 클릭하면 접히는 기능'},
+        day6: { title: 'Type Ahead', description: '검색 창에 단어를 타이핑하면,<br /> 해당 검색 결과를 보여주는 기능'},
+        day7: { title: 'Array Cardio2', description: 'array의 api 사용 능력 향상을 위한 훈련! <br />- some(), every(), find(), findIndex() 편'},
+        day8: { title: 'Fun With HTML Canvas', description: '웹 사이트에서 사용할 수 있는 초간단 그림판'},
+        day9: { title: 'Dev Tool', description: '개발자 도구 console 창 배우기'},
+        day10: { title: 'Hold Shift and Checkbox', description: 'shift key를 누르고 체크박스 다중 선택시, <br />중간에 있는 체크박스들도 함께 체크되는 기능'},
+        day11: { title: 'Custom Video Player', description: '비디오 플레이어 조작 기능 커스텀'},
+        day12: { title: 'Key Sequence Detect', description: '설정해놓은 비밀코드와 사용자가 타이핑한 단어가 동일한 경우, <br />스크린에는 유니콘 스티커, 콘솔창에는 성공 메세지가 출력!'},
+        day13: { title: 'Slide In OnScroll', description: '스크롤을 내리거나 올릴 때, 이미지가 fade-in 되는 효과'},
+        day14: { title: 'JS Ref vs Copy', description: '자바스크립트의 reference 타입과 primitive 타입 비교'},
+        day15: { title: 'Local Storage', description: '브라우저에 재접속해도 이전에 입력한 값들이 <br /> 그대로 유지되어 보이는 리스트 작성하기'},
+        day16: { title: 'Mouse Move Shadow', description: '마우스가 움직이는 정도에 따라  <br />그림자 4개가 각각 다른 방향으로 움직이기'},
+        day17: { title: 'Sort without Articles', description: '자바스크립트를 이용해서 알파벳 순서로 나열한  <br />영화 목록 보여주기'},
+        day18: { title: 'Adding up Times with Reduces', description: '목록에 포함된 비디오의 재생시간의 총합 구하기'},
+        day19: { title: 'Webcam Fun', description: '웹 캠으로 실시간 영상을 받아와, <br /> 컬러 필터 효과를 입힌 사진을 찍고 저장할 수 있는 기능'},
+        day20: { title: 'Speech Detection', description: '음성 인식해서 화면에 텍스트로 나타내는 기능 만들기'},
+        day21: { title: 'Compass', description: '방향 인식해서 나침반으로 표현하기'},
+        day22: { title: 'Follow along Link Highlighter', description: '마우스가 hyperlink 걸린 단어 위에 올라가면 단어가 highlight!'},
+        day23: { title: 'Speech Synthesis', description: '원하는 텍스트를 타이핑하고,  <br />선택한 목소리, 속도, 음으로 컴퓨터가 읽어주는 기능'},
+        day24: { title: 'Sticky Nav', description: 'Navigation bar가 스크롤했을 때 스크린 최상단으로 가면  <br />그 자리에 그대로 고정되어 있는 기능'},
+        day25: { title: 'Event Capture Propagation Bubbling and Once', description: 'Event Propagation: bubbling 과 capturing 이해'},
+        day26: { title: 'Stripe Follow along Nav', description: 'nav 메뉴에 마우스 올라갈 경우, 하단 드롭 메뉴 보이기'},
+        day27: { title: 'Click and Drag', description: '마우스로 이미지를 잡고 움직이면,  <br />이미지가 x축으로 스크롤되는 기능'},
+        day28: { title: 'Video Speed Controller', description: 'bar를 이용하여 동영상 재생속도를 조절하는 기능'},
+        day29: { title: 'Countdown Timer', description: '설정된 시간이 적혀있는 버튼을 누르거나  <br />원하는 시간을 입력하면 타이머가 시작되는 기능'},
+        day30: { title: 'Whack a Mole', description: '정해진 시간동안 랜덤한 시간 간격으로  <br />랜덤한 위치에서 두더지가 튀어나오고, <br/>튀어나온 두더지를 잡으면 점수를 획득하는 게임!'}
+    };
+      
+      for(let key in projectList){
+        const link = `${key}_${projectList[key]['title'].split(' ')
+                                                      .join('-')
+                                                      .toLowerCase()}`; 
+        const li = document.createElement('li');
+        li.classList.add('project__item');
+        li.innerHTML= `<img src="../image/${key.slice(3)}.jpg" class="project__img"></img>
+                      <div class="project__contents">
+                        <div class="project__description">
+                          <h2>${key}_${projectList[key]['title']}</h2>
+                          <p>${projectList[key]['description']}</p>
+                        </div>
+                        <div class="project__link" >
+                          <a href="${link}">Visit site</a>
+                        </div>  
+                      </div>`;
+        ul.append(li);
+      }
+    
     </script>
   </body>
 </html>

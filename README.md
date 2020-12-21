@@ -56,8 +56,7 @@ Wes Bos : https://javascript30.com/
 
 ### Function
 
-- input(type ="range") 슬라이드 조절시 css styling 요소가 사이트에 바로바로 변경 적용
-- 사이트 내 이미지의 blur, padding, base color(border) 변경
+- 슬라이더를 이용해서 사이트 내 스타일 요소를 변경하는 기능
 
 ### Wesbos의 솔루션
 
@@ -89,7 +88,7 @@ Wes Bos : https://javascript30.com/
 
 ### Function
 
-- Panel 클릭하면 펼쳐지고, 다시 클릭하면 접히는 기능
+- Panel을 클릭하면 펼쳐지고, 다시 클릭하면 접히는 기능
 
 ### Wesbos의 솔루션
 
@@ -116,7 +115,7 @@ Wes Bos : https://javascript30.com/
 
 1. fetch API로 JSON 데이터 불러오기
 2. 정규식 활용
-   - 숫자: 1000단위마다 ',' 추가하여 보여주기
+   - 인구 수: 1000단위마다 ',' 추가하여 보여주기
    - 검색어: Array.filter()과 map()을 활용하여 검색 단어와 일치하는 결과만 보여주고,검색어에는 css 강조 효과
 
 ### 개선방향
@@ -169,7 +168,7 @@ Wes Bos : https://javascript30.com/
 
 ### Function
 
-- shift key를 누르고 체크박스 다중 선택시, 사이에 있는 체크박스들도 함께 체크
+- shift key를 누르고 체크박스 다중 선택시, 중간에 있는 체크박스들도 함께 체크
 
 ### Wesbos의 솔루션
 
@@ -237,7 +236,6 @@ Wes Bos : https://javascript30.com/
 ### Function
 
 - 스크롤을 내리거나 올릴 때, 이미지가 fade-in 되는 효과
-- scroll 이벤트가 될 때마다 컴퓨터가 작업 처리할 경우 발생하는 낭비 처리
 
 ### Wesbos의 솔루션
 
@@ -266,7 +264,7 @@ Wes Bos : https://javascript30.com/
 
 ### Function
 
-- 브라우저를 재접속해도 기존에 입력한 값들이 그대로 유지
+- 브라우저에 재접속해도 이전에 입력한 값들이 그대로 유지되어 보이는 리스트 작성하기
 
 ### Wesbos의 솔루션
 
@@ -278,8 +276,8 @@ Wes Bos : https://javascript30.com/
 1. checkbox 클릭시 한번에 선택 혹은 해제되는 기능 추가
    - checkbox에 click 이벤트 실행되면, 조건문으로 checkbox 상태 확인 후 forEach문 활용하여 전체 check or 해제
 2. 목록 삭제 기능 추가
-   - 전체 삭제 시, localStorage.clear()
-   - 부분 삭제 시, localStorage.removeItem(key)
+   - 전체 삭제 시, localStorage.clear()로 로컬스토리지 초기화
+   - 부분 삭제 시, 리스트에서 아이템 삭제 후 로컬스토리지에 리스트를 다시 저장하는 방법
 
 ---
 
@@ -309,7 +307,7 @@ Wes Bos : https://javascript30.com/
 
 ### Function
 
-- html 파일에 적지 않고, JS로 영화 목록을 알파벳 순서로 나열 후 display
+- 자바스크립트를 이용해서 알파벳 순서로 나열한 영화 목록 보여주기
 
 ### Wesbos의 솔루션
 
@@ -472,7 +470,7 @@ Wes Bos : https://javascript30.com/
 
 ### Function
 
-- 스크롤해서 Navigation bar가 스크린 최상단으로 가면 최상단에 그대로 고정
+- Navigation bar가 스크롤했을 때 스크린 최상단으로 가면 그대로 고정되어 있는 기능
 
 ### Wesbos의 솔루션
 

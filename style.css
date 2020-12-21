@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500');
+html {
+  font-size: 16px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,4 +16,85 @@ a {
 
 li {
   list-style: none;
+}
+
+body {
+  font-family: 'Noto Sans KR', sans-serif; 
+  font-weight: 300;
+}
+
+.main-title {
+  margin: 0 0 1rem;
+  padding: .5rem 1rem;
+  font-size: 3rem;
+  font-family: 'Bebas Neue', cursive;
+  background-color: rgb(188, 215, 224);
+  position: sticky;
+  top: 0;
+}
+
+.project__item {
+  display: flex;
+  align-items: flex-start;
+  background-color: rgba(210,210,210,0.15);
+  margin: 1rem;
+  padding: .75rem;
+  border-radius: .25rem;
+}
+
+.project__img {
+  width: 360px;
+  height: 240px;
+  margin-right: 1.5rem;
+  object-fit: cover;
+}
+
+.project__contents {
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project__description h2{
+  font-size: 1.25rem;
+  margin-bottom: .5rem;
+  text-transform: capitalize;
+}
+
+.project__link {
+  font-weight: 500;
+  color: rgba(100,100,100);
+  margin-left: .25rem;
+}
+
+.project__link:hover {
+  color: black;
+  font-size: 1.05rem;
+}
+
+
+@media screen and (max-width: 768px){
+  .main-title {
+    font-size: 2.4rem;
+  }
+
+  .project__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .project__img {
+    width: 100%;
+  }
+
+  .project__contents {
+    height: 180px;
+  }  
+
+  .project__description h2{
+    margin-top: .5rem;
+  }
+
 }

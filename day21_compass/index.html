@@ -63,10 +63,11 @@
     const speed = document.querySelector('.speed-value');
 
     navigator.geolocation.watchPosition(data => {
+      console.log(data);
       speed.textContent = data.coords.speed;
-      arrow.style.transform = `rotate${data.coords.heading}deg`;
+      arrow.style.transform = `rotate(${data.coords.heading}deg)`;
     }, 
-    err => console.error(err));
+    err => alert('설정에서 위치 접근을 허용해주세요'));
 
 
   </script>
