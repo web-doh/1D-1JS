@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -37,20 +36,31 @@
 
   <script>
     const panels = document.querySelector('.panels');
+    const panelList = Array.from(document.querySelectorAll('.panel'));
 
     function addOpen(e){
-        if(e.target.tagName ='P'){
-            e.target.parentNode.classList.toggle('open');
-        }e.target.classList.toggle('open');
+     e.target.tagName == 'P'? 
+     e.target.parentNode.classList.toggle('open')
+     : e.target.classList.toggle('open');
     }
     
+    function addClose(e){
+     const openPanel = panelList.filter(panel =>
+       panel.className.includes('open-active'));
+       if(openPanel[0] == undefined) return;
+     openPanel[0].classList.remove('open');
+       }
+
     function addSubtext(e){
-        if (e.propertyName.includes('flex')) {
-        e.target.classList.toggle('open-active');
-        };
-    }
-    
-    panels.addEventListener('click', addOpen);
+        if(e.propertyName.includes('flex')){
+          e.target.classList.toggle('open-active');
+        }
+    } 
+
+    panels.addEventListener('click', (e)=> {
+      addOpen(e);
+      addClose(e);
+      });
     panels.addEventListener('transitionend', addSubtext);
 
     // panels.forEach(panel => {
@@ -65,3 +75,4 @@
 
 </body>
 </html>
+
