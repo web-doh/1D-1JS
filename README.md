@@ -1,20 +1,42 @@
 # 1Day 1JS Challenge!!
 
+## 1. Introduction
+사이트에서 제공하는 기본 템플릿을 기반으로 매일매일 Vanilla JS 챌린지 (30개)!     
+
+배포된 사이트(https://web-doh.github.io/1day-1js/) 에서 각 챌린지마다 있는 버튼들 중
+  - <b>Doh</b>를 클릭하면 내가 수정해서 만든 웹 사이트로 이동 
+  - <b>Wesbos</b>를 클릭하면 사이트에서 제공하는 원본 소스의 웹 사이트로 이동
+
+<img src="./imgs/main.jpg" width="720px" title="screenshot" alt="screenshot" />   
+</br>
+
 ### 기간
 
-2020/08/21 ~ 2020/10/16 (주말은 제외~!)
+2020/08/21 ~ 2020/10/16 (주말은 제외)
 
 - 2020/12/17-19 : day19 파일 및 메인 페이지 추가
-
-### 내용
-
-사이트에서 제공하는 기본 템플릿을 기반으로 매일매일 Vanilla JS 챌린지!
+</br>
 
 ### 제작 소스 제공
 
 Wes Bos : https://javascript30.com/
+</br>
 
----
+## 2. 사용 스킬
+
+- ES2015+
+- HTML / CSS
+</br>
+
+## 3. Deployment
+Github: https://web-doh.github.io/1day-1js/
+</br>
+
+## 4. 접근 방식  
+사이트에서 제시하는 솔루션을 바탕으로 직접 개선할 부분을 찾아서 개선하기  
+</br>
+
+## 5. 각 챌린지별 진행 방법
 
 ## Day1: Drum-kit (20/08/21)
 
