@@ -1,3 +1,5 @@
+![cover](./imgs/main.jpg)
+
 # 1Day 1JS Challenge!!
 
 ## 1. Introduction
@@ -7,7 +9,7 @@
   - <b>Doh</b>를 클릭하면 내가 수정해서 만든 웹 사이트로 이동 
   - <b>Wesbos</b>를 클릭하면 사이트에서 제공하는 원본 소스의 웹 사이트로 이동
 
-<img src="./imgs/main.jpg" width="720px" title="screenshot" alt="screenshot" />   
+![preview](./imgs/preview.gif)
 </br>
 
 ### 기간
